@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>rpiwave-ui</title>
+        <link rel="stylesheet" href="/assets/css/index.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-VhBcF/php0Z/P5ZxlxaEx1GwqTQVIBu4G4giRWxTKOCjTxsPFETUDdVL5B6vYvOt" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id="app">
+            <div class="page active" id="page-1">
+                <div class="navbar">
+                    <div class="navbar-left">
+                        <i class="navbar-icon fal fa-4x fa-home" id="navbar-home"></i>
+                        <i class="navbar-icon fal fa-4x fa-chevron-left" id="navbar-back"></i>
+                    </div>
+                    <p class="navbar-cp">Currently Playing</p>
+                    <p class="navbar-title">Neffex | No Sleep</p>
+                    <div class="navbar-right">
+                        <p class="navbar-clock">14:35</p>
+                    </div>
+
+                </div>
+                <div class="main">
+                    <div class="card-button">
+                        <p class="card-button-text">DAB</p>
+                    </div>
+                </div>
+            </div>
+            <div class="page hidden" id="page-2">
+                <div class="navbar"></div>
+                <p>Hello, this is page 2</p>
+            </div>
+        </div>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>

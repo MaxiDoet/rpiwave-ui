@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    --theme-dark-first-color: #252525;
+    --theme-dark-secondary-color: #1f1f1f;
+    --theme-dark-third-color: #2d2d2d;
+    --theme-dark-fourth-color:  #3e3e3e;
+    --theme-dark-first-text-color: #ffffff;
+    --theme-dark-secondary-text-color: #c1c1c1;
+
+    width: 100%;
+    height: 100%;
+    background-color: var(--theme-dark-first-color);
+
+    color: var(--theme-dark-first-text-color);
+    font-family: Arial;
+}
+
+.page {
+
+}
+
+.page.active {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.page.hidden {
+    display: none;
+}
+
+.navbar {
+    width: 100%;
+    display: inline-block;
+}
+
+.navbar-title {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--theme-dark-first-text-color);
+    font-weight: normal;
+    font-size: xx-large;
+}
+
+.navbar-cp {
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--theme-dark-first-text-color);
+    font-weight: lighter;
+    font-size: small;
+}
+
+.navbar-icon {
+    margin: 10px;
+    transition: 0.3s;
+    filter: blur(0px);
+}
+
+.navbar-icon:active {
+    transition: 0.4s;
+    color: var(--theme-dark-secondary-text-color);
+    filter: blur(2px);
+}
+
+.navbar-clock {
+    position: absolute;
+    top: 5%;
+    right: 2%;
+    transform: translate(-50%, -50%);
+    color: var(--theme-dark-first-text-color);
+    font-weight: lighter;
+    font-size: x-large;
+}
+
+.card-button {
+    width: 200px;
+    height: 100px;
+    background-color: var(--theme-dark-third-color);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    filter: blur(0px);
+}
+
+.card-button:active {
+    transition: 0.3s;
+    filter: blur(2px);
+    user-select: none;
+    background-color: var(--theme-dark-fourth-color);
+}
+
+.card-button-text {
+    font-weight: lighter;
+    font-size: xx-large;
+    color: var(--theme-dark-first-text-color);
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Animated gradient-background */
+#app {
+    background: linear-gradient(340deg, #252525, #1f1f1f);
+    background-size: 400% 400%;
+
+    -webkit-animation: gradient-background 5s ease infinite;
+    -moz-animation: gradient-background 5s ease infinite;
+    animation: gradient-background 5s ease infinite;
+}
+
+@-webkit-keyframes gradient-background {
+    0%{background-position:0% 31%}
+    50%{background-position:100% 70%}
+    100%{background-position:0% 31%}
+}
+@-moz-keyframes gradient-background {
+    0%{background-position:0% 31%}
+    50%{background-position:100% 70%}
+    100%{background-position:0% 31%}
+}
+@keyframes gradient-background {
+    0%{background-position:0% 31%}
+    50%{background-position:100% 70%}
+    100%{background-position:0% 31%}
+}
