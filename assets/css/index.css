@@ -8,6 +8,11 @@ p {
     padding: 0;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 #app {
     --theme-dark-first-color: #252525;
     --theme-dark-secondary-color: #1f1f1f;
@@ -34,7 +39,7 @@ p {
     display: block;
 }
 
-.page.hidden {
+.page {
     display: none;
 }
 
@@ -52,12 +57,13 @@ p {
     color: var(--theme-dark-first-text-color);
     font-weight: normal;
     font-size: xx-large;
+    animation: fadeIn 4s normal forwards;
 }
 
 .navbar-cp {
     position: absolute;
-    top: 3%;
     left: 50%;
+    top: 3%;
     transform: translate(-50%, -50%);
     color: var(--theme-dark-first-text-color);
     font-weight: lighter;
@@ -124,8 +130,7 @@ p {
 }
 
 .main {
-    display: flex;
-    justify-content: center;
+    display: block;
     padding: 20px;
 }
 
@@ -153,4 +158,94 @@ p {
     0%{background-position:0% 31%}
     50%{background-position:100% 70%}
     100%{background-position:0% 31%}
+}
+
+#page-1-clock {
+    font-weight: bold;
+    font-size: 150px;
+    animation: clockFadeIn 2s normal forwards;
+}
+
+#page-1-date {
+    font-weight: lighter;
+    font-size: 30px;
+    animation: fadeIn 3s normal forwards;
+}
+
+#page-1 {
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes clockFadeIn {
+    0% {
+        margin-top: 8%;
+        opacity: 0.6;
+    }
+    100% {
+        margin-top: 11%;
+        opacity: 1;
+    }
+}
+
+#page-1-currentlyPlaying {
+    position: relative;
+    display: inline-block;
+    margin-top: 5%;
+}
+
+#page-1-currentlyPlaying p {
+    margin-left: 10px;
+    font-family: Arial;
+    font-weight: normal;
+    animation: fadeIn 3s normal forwards;
+}
+
+#page-1-currentlyPlaying span {
+    margin-left: 10px;
+    font-family: Arial;
+    font-weight: lighter;
+    animation: fadeIn 3s normal forwards;
+}
+
+.progress-bar {
+  background: rgba(255,255,255,0.1);
+  justify-content: flex-start;
+  border-radius: 100px;
+  align-items: center;
+  position: relative;
+  padding: 0 5px;
+  display: flex;
+}
+
+.progress-bar-value {
+  border-radius: 100px;
+  background: #fff;
+  height: 30px;
+  width: 0;
+}
+
+@keyframes load {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+#boot-progress {
+    height: 40px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30%;
+}
+
+#boot-progress .progress-bar-value {
+    animation: load 3s normal forwards;
 }

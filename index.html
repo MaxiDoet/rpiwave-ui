@@ -7,7 +7,24 @@
     </head>
     <body>
         <div id="app">
-            <div class="page active" id="page-1">
+            <div class="page" id="page-0">
+                <div class="main">
+                    <div class="progress-bar" id="boot-progress">
+                        <div class="progress-bar-value"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="page" id="page-1">
+                <div class="main">
+                    <h2 id="page-1-clock">13:45</h2>
+                    <h2 id="page-1-date">13/01/2021</h2>
+                    <div id="page-1-currentlyPlaying">
+                        <p id="page-1-currentlyPlaying-source">Spotify</p>
+                        <i class="fal fa-play-circle fa-2x"><span id="page-1-currentlyPlaying-title">Fear | Neffex</span></i>
+                    </div>
+                </div>
+            </div>
+            <div class="page" id="page-2">
                 <div class="navbar">
                     <div class="navbar-left">
                         <i class="navbar-icon fal fa-4x fa-home" id="navbar-home"></i>
@@ -27,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div class="page hidden" id="page-2">
+            <div class="page" id="page-3">
                 <div class="navbar"></div>
                 <p>Hello, this is page 2</p>
             </div>
