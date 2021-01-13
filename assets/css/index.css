@@ -41,6 +41,7 @@ p {
 .navbar {
     width: 100%;
     display: inline-block;
+    background-color: var(--theme-dark-secondary-color);
 }
 
 .navbar-title {
@@ -78,7 +79,7 @@ p {
 
 .navbar-clock {
     position: absolute;
-    top: 5%;
+    top: 6%;
     right: 2%;
     transform: translate(-50%, -50%);
     color: var(--theme-dark-first-text-color);
@@ -87,11 +88,11 @@ p {
 }
 
 .card-button {
-    width: 200px;
-    height: 100px;
+    width: 250px;
+    height: 150px;
     background-color: var(--theme-dark-third-color);
     border-radius: 10px;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     transition: 0.3s;
@@ -106,9 +107,20 @@ p {
 }
 
 .card-button-text {
+    text-align: center;
     font-weight: lighter;
     font-size: xx-large;
+    padding-top: 10px;
     color: var(--theme-dark-first-text-color);
+}
+
+.card-button-image {
+    display: block;
+    width: 100px;
+    height: 100px;
+    /* margin: 10px; */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .main {
