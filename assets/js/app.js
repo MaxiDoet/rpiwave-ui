@@ -20,4 +20,4 @@ function setPage(pageNum) {
     }
 }
 
-setPage(2);
+setPage(3);

@@ -51,7 +51,7 @@ p {
 
 .navbar-title {
     position: absolute;
-    top: 7%;
+    top: 5%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: var(--theme-dark-first-text-color);
@@ -63,7 +63,7 @@ p {
 .navbar-cp {
     position: absolute;
     left: 50%;
-    top: 3%;
+    top: 2%;
     transform: translate(-50%, -50%);
     color: var(--theme-dark-first-text-color);
     font-weight: lighter;
@@ -85,12 +85,12 @@ p {
 
 .navbar-clock {
     position: absolute;
-    top: 6%;
+    top: 5%;
     right: 2%;
     transform: translate(-50%, -50%);
     color: var(--theme-dark-first-text-color);
     font-weight: lighter;
-    font-size: x-large;
+    font-size: xx-large;
 }
 
 .card-button {
@@ -109,6 +109,11 @@ p {
     transition: 0.3s;
     filter: blur(2px);
     user-select: none;
+    background-color: var(--theme-dark-fourth-color);
+}
+
+.card-button:hover {
+    transition: 0.2s;
     background-color: var(--theme-dark-fourth-color);
 }
 
@@ -248,4 +253,61 @@ p {
 
 #boot-progress .progress-bar-value {
     animation: load 3s normal forwards;
+}
+
+.scrollcontainer-horizontal {
+    white-space: nowrap;
+    overflow: auto; 
+}
+
+.station {
+    width: 250px;
+    height: 180px;
+    background-color: var(--theme-dark-secondary-color);
+    margin: 30px;
+    display: inline-block;
+    background-size: cover;
+    transition: 0.3s;
+    position: relative;
+    opacity: 1;
+}
+
+.station:active {
+    transition: 0.3s;
+    opacity: 0.3;
+}
+
+.station:hover {
+    transition: 0.3s;
+    opacity: 0.3;
+}
+
+.station:hover > .station-title {
+    opacity: 1;
+    animation: stationTitleFadeIn 2s normal forwards;
+}
+
+@keyframes stationTitleFadeIn {
+  0% {
+    top: 60%;
+  }
+  100% {
+    top: 70%;
+  }
+}
+
+.station-title {
+    opacity: 0;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.station-banner {
+    border-radius: 2px;
+    width: 250px;
+    height: 180px;
 }
