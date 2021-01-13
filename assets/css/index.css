@@ -45,7 +45,7 @@ p {
 
 .navbar-title {
     position: absolute;
-    top: 5%;
+    top: 7%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: var(--theme-dark-first-text-color);
@@ -55,12 +55,13 @@ p {
 
 .navbar-cp {
     position: absolute;
-    top: 2%;
+    top: 3%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: var(--theme-dark-first-text-color);
     font-weight: lighter;
     font-size: small;
+    color: var(--theme-dark-secondary-text-color);
 }
 
 .navbar-icon {
