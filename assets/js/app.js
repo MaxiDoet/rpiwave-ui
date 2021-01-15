@@ -1,7 +1,8 @@
 var app = new Vue({
     el: '#app',
     data: {
-        playerAnimatedBackgroundEnabled: true
+        playerAnimatedBackgroundEnabled: true,
+        latestAvaiable: false
     }
 })
 

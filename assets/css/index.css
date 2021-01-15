@@ -404,7 +404,8 @@ p {
     background-color: var(--theme-dark-third-color);
     border-radius: 2px;
     position: absolute;
-    top: 10px;
+    top: 15px;
+    transition: 0.4s;
 }
 
 .mediawidget i {
@@ -424,4 +425,9 @@ p {
     font-size: 10px;
     margin-top: 2px;
     margin-left: 20px;
+}
+
+.mediawidget:hover {
+    transition: 0.4s;
+    background-color: var(--theme-dark-fourth-color);
 }
