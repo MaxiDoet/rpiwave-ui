@@ -29,5 +29,30 @@ const stationElements = document.querySelectorAll(".station");
      });
  }
 
+setPage(2);
 
-setPage(4);
+// Register all eventhandlers
+// Page 0 No eventhandlers
+// Page 1
+document.querySelector('#page-1').addEventListener("click", function() {
+    setPage(2)
+})
+// Page 2
+document.querySelector('#page-2-home').addEventListener("click", function() {
+    setPage(1)
+})
+document.querySelector('#page-2-back').addEventListener("click", function() {
+    //Todo: if latest action is set go back to it
+})
+
+document.querySelector('#page-2-action-dab').addEventListener("click", function() {
+    setPage(3)
+})
+
+//Page 3
+document.querySelector('#page-3-home').addEventListener("click", function() {
+    setPage(2)
+})
+document.querySelector('#page-3-back').addEventListener("click", function() {
+    setPage(2)
+})

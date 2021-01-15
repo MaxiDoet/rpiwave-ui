@@ -21,24 +21,30 @@
                     <div id="page-1-currentlyPlaying">
                         <p id="page-1-currentlyPlaying-source">Spotify</p>
                         <i class="fal fa-play-circle fa-2x"><span id="page-1-currentlyPlaying-title">Fear | Neffex</span></i>
+                        <p id="page-1-currentlyPlaying-time">1:32 / 2:45</p>
                     </div>
                 </div>
             </div>
             <div class="page" id="page-2">
                 <div class="navbar">
                     <div class="navbar-left">
-                        <i class="navbar-icon fal fa-4x fa-home" id="navbar-home"></i>
-                        <i class="navbar-icon fal fa-4x fa-chevron-left" id="navbar-back"></i>
+                        <i class="navbar-icon fal fa-4x fa-home" id="page-2-home"></i>
+                        <i class="navbar-icon fal fa-4x fa-chevron-left" id="page-2-back"></i>
+                        <div class="mediawidget">
+                            <i class="fas fa-2x fa-play-circle"></i>
+                            <!--<img></img>-->
+                            <p class="mediawidget-title">Fear | Neffex</p>
+                            <p class="mediawidget-time">1:35 / 1:45</p>
+                        </div>
                     </div>
-                    <p class="navbar-cp">Currently Playing</p>
-                    <p class="navbar-title">Neffex | No Sleep</p>
+                    <p class="navbar-title"></p>
                     <div class="navbar-right">
                         <p class="navbar-clock">14:35</p>
                     </div>
 
                 </div>
                 <div class="main">
-                    <div class="card-button">
+                    <div class="card-button" id="page-2-action-dab">
                         <img class="card-button-image" src="https://www.worlddab.org/image/content/2054/400x235_DABplus_Logo_Farbe_sRGB.png?1592217072"></img>
                         <p class="card-button-text">DAB</p>
                     </div>
@@ -47,8 +53,8 @@
             <div class="page" id="page-3">
                 <div class="navbar">
                     <div class="navbar-left">
-                        <i class="navbar-icon fal fa-4x fa-home" id="navbar-home"></i>
-                        <i class="navbar-icon fal fa-4x fa-chevron-left" id="navbar-back"></i>
+                        <i class="navbar-icon fal fa-4x fa-home" id="page-3-home"></i>
+                        <i class="navbar-icon fal fa-4x fa-chevron-left" id="page-3-back"></i>
                     </div>
                     <p class="navbar-title">Web Radio</p>
                     <div class="navbar-right">
@@ -118,8 +124,8 @@
             <div class="page" id="page-4">
                 <div class="navbar">
                     <div class="navbar-left">
-                        <i class="navbar-icon fal fa-4x fa-home" id="navbar-home"></i>
-                        <i class="navbar-icon fal fa-4x fa-chevron-left" id="navbar-back"></i>
+                        <i class="navbar-icon fal fa-4x fa-home" id="page-4-home"></i>
+                        <i class="navbar-icon fal fa-4x fa-chevron-left" id="page-4-back"></i>
                     </div>
                     <p class="navbar-title">Web Radio</p>
                     <div class="navbar-right">
@@ -128,14 +134,15 @@
 
                 </div>
                 <div class="main">
-                    <div class="player-big">
-                        <img src="https://bayern3.de/favicon.png" class="player-big-cover"></img>
-                        <div class="player-big-controls" id="webRadioControls">
+                    <div class="radio-player">
+                        <img src="https://bayern3.de/favicon.png" class="radio-player-cover"></img>
+                        <p class="radio-player-station">Bayern 3</p>
+                        <div class="radio-player-controls" id="webRadioControls">
                             <i class="fas fa-2x fa-play-circle"></i>
                         </div>
-                        <p class="player-big-title">Fear</p>
-                        <p class="player-big-artist">Neffex</p>
-                        <div class="player-big-badge-row">
+                        <p class="radio-player-title">Fear</p>
+                        <p class="radio-player-artist">Neffex</p>
+                        <div class="radio-player-badge-row">
                             <i class="fas fa-badge-check"></i>
                             <i class="fas fa-badge-dollar"></i>
                         </div>

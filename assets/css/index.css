@@ -60,17 +60,6 @@ p {
     animation: fadeIn 4s normal forwards;
 }
 
-.navbar-cp {
-    position: absolute;
-    left: 50%;
-    top: 2%;
-    transform: translate(-50%, -50%);
-    color: var(--theme-dark-first-text-color);
-    font-weight: lighter;
-    font-size: small;
-    color: var(--theme-dark-secondary-text-color);
-}
-
 .navbar-icon {
     margin: 10px;
     transition: 0.3s;
@@ -202,9 +191,10 @@ p {
 }
 
 #page-1-currentlyPlaying {
-    position: relative;
-    display: inline-block;
-    margin-top: 5%;
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+    transform: translate(-50%, 0);
 }
 
 #page-1-currentlyPlaying p {
@@ -212,6 +202,7 @@ p {
     font-family: Arial;
     font-weight: normal;
     animation: fadeIn 3s normal forwards;
+    margin-bottom: 5px;
 }
 
 #page-1-currentlyPlaying span {
@@ -219,6 +210,10 @@ p {
     font-family: Arial;
     font-weight: lighter;
     animation: fadeIn 3s normal forwards;
+}
+
+#page-1-currentlyPlaying-time {
+    margin-top: 5px;    
 }
 
 .progress-bar {
@@ -349,21 +344,21 @@ p {
     }
 }
 
-.player-big {
+.radio-player {
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2%;
+    margin-top: 1%;
     width: 348px;
     text-align: center;
 }
 
-.player-big-cover {
+.radio-player-cover {
     width: 348px;
     height: 348px;
 }
 
-.player-big-controls {
+.radio-player-controls {
     position: relative;
     width: 50px;
     margin-left: auto;
@@ -371,21 +366,27 @@ p {
     margin-top: 50px;
 }
 
-.player-big-badge-row {
+.radio-player-badge-row {
     position: relative;
     width: max-content;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
-.player-big-title {
-    margin-top: 20px;
+.radio-player-station {
+    margin-top: 10px;
     font-weight: lighter;
     font-size: 50px;
 }
 
-.player-big-artist {
+.radio-player-title {
+    margin-top: 20px;
+    font-weight: lighter;
+    font-size: 30px;
+}
+
+.radio-player-artist {
     margin-top: 10px;
     font-weight: lighter;
     font-size: 15px;
@@ -393,4 +394,31 @@ p {
 
 #webRadioControls {
     display: none;
+}
+
+.mediawidget {
+    display: inline-flex;
+    width: 250px;
+    height: 60px;
+    margin-left: 50px;
+    background-color: var(--theme-dark-third-color);
+    border-radius: 2px;
+    position: absolute;
+    top: 10px;
+}
+
+.mediawidget i {
+    margin-top: 15px;
+    margin-left: 15px;
+    height: 50px;
+}
+
+.mediawidget-title {
+    margin-left: 20px;
+    margin-top: 15px;
+    height: fit-content;
+}
+
+.mediawidget-time {
+    height: fit-content;
 }
