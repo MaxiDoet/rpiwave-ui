@@ -1,6 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
+        playerAnimatedBackgroundEnabled: true
     }
 })
 
@@ -28,5 +29,5 @@ const stationElements = document.querySelectorAll(".station");
      });
  }
 
- 
-setPage(3);
+
+setPage(4);
