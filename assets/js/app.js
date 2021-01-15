@@ -20,4 +20,13 @@ function setPage(pageNum) {
     }
 }
 
+const stationElements = document.querySelectorAll(".station");
+
+ for (let i = 0; i < stationElements.length; i++) {
+     stationElements[i].addEventListener("click", function() {
+       stationElements[i].classList.add('loading')
+     });
+ }
+
+ 
 setPage(3);
