@@ -284,7 +284,7 @@ p {
 
 .station:hover > .station-title {
     opacity: 1;
-    animation: stationTitleFadeIn 2s normal forwards;
+    animation: stationTitleFadeIn 0.3s normal forwards;
 }
 
 @keyframes stationTitleFadeIn {
@@ -310,4 +310,41 @@ p {
     border-radius: 2px;
     width: 250px;
     height: 180px;
+}
+
+.station-loader {
+    width: 100%;
+    height: 5%;
+}
+
+.station.loading > .station-loader span {
+    display: block;
+    height: 50%;
+    width: 0%;
+    animation: stationLoaderFillUp 2s normal forwards;
+    background-color: var(--theme-dark-first-text-color);
+}
+
+/*
+.station:active > .station :not(.loading) {
+    animation: fadeAllStationsOut 1s normal forwards;
+}
+*/
+
+@keyframes stationLoaderFillUp {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes fadeAllStationsOut {
+    0% {
+        opactity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
