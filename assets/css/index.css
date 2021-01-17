@@ -13,6 +13,8 @@ p {
     padding: 0;
 }
 
+
+
 #app {
     --theme-dark-first-color: #252525;
     --theme-dark-secondary-color: #1f1f1f;
@@ -461,4 +463,71 @@ p {
 .mediawidget:hover {
     transition: 0.4s;
     background-color: var(--theme-dark-fourth-color);
+}
+
+.webframe {
+    width: -webkit-fill-available;
+    height: 90%;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.app {
+    width: 250px;
+    height: 180px;
+    background-color: var(--theme-dark-secondary-color);
+    margin: 30px;
+    display: inline-block;
+    background-size: cover;
+    transition: 0.3s;
+    position: relative;
+    opacity: 1;
+}
+
+.app:active {
+    transition: 0.3s;
+    opacity: 0.3;
+}
+
+.app:hover {
+    transition: 0.3s;
+    opacity: 0.3;
+}
+
+.app-banner {
+    border-radius: 2px;
+    width: 250px;
+    height: 180px;
+}
+
+.app-loader {
+    width: 100%;
+    height: 5%;
+}
+
+.app.loading > .app-loader span {
+    display: block;
+    height: 50%;
+    width: 0%;
+    animation: appLoaderFillUp 5s normal forwards;
+    background-color: var(--theme-dark-first-text-color);
+}
+
+@keyframes appLoaderFillUp {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes fadeAllAppsOut {
+    0% {
+        opactity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }

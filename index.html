@@ -2,8 +2,11 @@
     <head>
         <title>rpiwave-ui</title>
         <link rel="stylesheet" href="/assets/css/index.css">
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-VhBcF/php0Z/P5ZxlxaEx1GwqTQVIBu4G4giRWxTKOCjTxsPFETUDdVL5B6vYvOt" crossorigin="anonymous">
+    
+        <!--For bypassing x-frame-options block-->
+        <script src="https://unpkg.com/@ungap/custom-elements-builtin"></script>
+        <script type="module" src="https://unpkg.com/x-frame-bypass"></script>
     </head>
     <body>
         <div id="app">
@@ -51,9 +54,13 @@
 
                 </div>
                 <div class="main">
-                    <div class="card-button" id="page-2-action-dab">
-                        <img class="card-button-image" src="https://www.worlddab.org/image/content/2054/400x235_DABplus_Logo_Farbe_sRGB.png?1592217072"></img>
-                        <p class="card-button-text">DAB</p>
+                    <div class="scrollcontainer-horizontal" id="page-2-online">
+                        <div class="app" id="app-spotify">
+                            <img class="app-banner" src="/assets/icons/apps/spotify.png"></img>   
+                            <div class="app-loader">
+                                <span></span>
+                            </div>               
+                        </div>                        
                     </div>
                 </div>
             </div>
@@ -70,7 +77,7 @@
 
                 </div>
                 <div class="main">
-                    <div v-if="latestAvaiable" id="page-3-latest" class="scrollcontainer-horizontal">
+                    <div id="page-3-latest" class="scrollcontainer-horizontal">
                         <div class="station">
                             <img class="station-banner" src="https://www.radioszene.de/wp-content/uploads/2013/10/bayern3-logo-1280x720.jpg"></img>
                             <span class="station-title">Bayern 3</span>      
@@ -268,7 +275,24 @@
                     </div>
                 </div>
             </div>
+            <div class="page" id="page-5">
+                <div class="navbar">
+                    <div class="navbar-left">
+                        <i class="navbar-icon fal fa-4x fa-home" id="page-5-home"></i>
+                        <i class="navbar-icon fal fa-4x fa-chevron-left" id="page-5-back"></i>
+                    </div>
+                    <p class="navbar-title">Spotify</p>
+                    <div class="navbar-right">
+                        <p class="navbar-clock">14:35</p>
+                    </div>
+
+                </div>
+                <div class="main" style="padding: 0">
+                    <iframe id="page-5-frame" allow="encrypted-media" class="webframe" src=""></iframe>
+                </div>
+            </div>
         </div>
+
         <script src="/assets/js/app.js"></script>
     </body>
 </html>
