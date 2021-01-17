@@ -30,7 +30,7 @@ const stationElements = document.querySelectorAll(".station");
      });
  }
 
-setPage(2);
+setPage(1);
 
 // Register all eventhandlers
 // Page 0 No eventhandlers
