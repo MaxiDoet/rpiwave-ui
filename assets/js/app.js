@@ -1,5 +1,6 @@
-
 var appContainer = document.querySelector("#app")
+
+var applications = []
 
 function setPage(pageNum) {
     var c = appContainer.children;
@@ -23,9 +24,9 @@ for (let i = 0; i < stationElements.length; i++) {
     });
 }
 
+/*
 const appElements = document.querySelectorAll(".app");
 
-/*
 for (let i = 0; i < appElements.length; i++) {
     console.log(appElements[i])
     appElements[i].addEventListener("click", function() {
@@ -74,7 +75,7 @@ document.querySelector('#page-5-back').addEventListener("click", function() {
     setPage(2)
 })
 
-//Spotify app
+/*Old spotify app 
 document.querySelector('#app-spotify').addEventListener("click", function() {
     webFrame = document.querySelector('#page-5-frame')
     webFrame.addEventListener("load", function() {
@@ -99,6 +100,7 @@ document.querySelector('#app-spotify').addEventListener("click", function() {
 
     webFrame.src="https://open.spotify.com/"
 })
+*/
 
 /*
 Old iframe loader works on powerful devices but not on a raspberry pi 3!
@@ -115,3 +117,98 @@ for (let i = 0; i < webFrames.length; i++) {
     });
 }
 */
+
+function setCurrentlyPlaying(widgetId, sourceType, mediaTitle) {
+    widget = document.querySelector(`#${widgetId}`)
+    title = widget.querySelector('.mediawidget-title')
+    icon = widget.querySelector('.mediawidget-icon') 
+
+    console.log(`Updating mediaWidget (id: ${widgetId})`)
+    console.log(` Title: ${mediaTitle}`)
+    console.log(` Sourcetype: ${sourceType}`)
+
+    /* 
+    Source types:
+     - 0 Web stream
+     - 1 Radio
+     - 2 Online service eg. Spotify, ...
+     - 3 UPNP
+    */
+
+    icon.classList.remove("fa-signal-stream")
+    icon.classList.remove("fa-broadcast-tower")
+
+    switch (sourceType) {
+       case 0:  
+        icon.classList.add("fa-signal-stream")
+       case 1:
+        icon.classList.add("fa-broadcast-tower")
+       case 2:
+
+       case 3:
+   }
+
+   title.textContent = mediaTitle
+}
+
+function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, appPage, webFrame, frameUrl) {
+    scrollContainer = document.querySelector(`#${scrollContainerId}`)
+    appElement = document.querySelector(`#page-${appPage}`).querySelector('.main')
+
+    /* Reference
+    <div class="app" id="app-spotify">
+        <img class="app-banner" src="/assets/icons/apps/spotify.png"></img>   
+        <div class="app-loader">
+            <span></span>
+        </div>               
+    </div>  
+    */
+
+   app = document.createElement('div')
+   app.setAttribute('class', 'app')
+   app.setAttribute('id', `app-${id}`)
+
+   appBanner = document.createElement('img')
+   appBanner.setAttribute('class', 'app-banner')
+   appBanner.src = bannerPath
+
+   appLoader = document.createElement('div')
+   appLoader.setAttribute('class', 'app-loader')
+   appLoaderSpan = document.createElement('span')
+   appLoader.appendChild(appLoaderSpan)
+
+   app.appendChild(appBanner)
+   app.appendChild(appLoader)
+
+   scrollContainer.appendChild(app)
+
+   applications.push({id: `${id}`, page: `${appPage}`, webFrame: `${webFrame}`, frameUrl: `${frameUrl}`})
+
+    if (webFrame) {
+        appFrame = appElement.querySelector(`#page-${appPage}-frame`)
+        
+        appFrame.addEventListener('load', function() {
+            app.classList.remove("loading")    
+            app.classList.add("loaded")    
+            setPage(appPage)
+        })
+    }
+
+    app.addEventListener('click', function() {
+        if (app.classList.contains('loaded')) {
+            setPage(appPage)
+        } else {
+            app.classList.add('loading')
+
+            if (webFrame) {
+                appFrame.src = frameUrl
+            }
+        }
+    })
+}
+
+// Register all apps
+// Spotify
+setTimeout(function() {
+    registerStreamingApplication("page-2-online", "spotify", "/assets/icons/apps/spotify.png", "fa-spotify", 5, true, "https://www.youtube.com/embed/tgbNymZ7vqY")    
+}, 1000)
