@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -11,6 +15,7 @@ p {
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 
@@ -39,6 +44,7 @@ p {
     width: 100%;
     height: 100%;
     display: block;
+    overflow: hidden;
 }
 
 .page {
@@ -53,7 +59,7 @@ p {
 
 .navbar-title {
     position: absolute;
-    top: 5%;
+    top: 9%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: var(--theme-dark-first-text-color);
@@ -76,7 +82,7 @@ p {
 
 .navbar-clock {
     position: absolute;
-    top: 5%;
+    top: 9%;
     right: 2%;
     transform: translate(-50%, -50%);
     color: var(--theme-dark-first-text-color);
@@ -127,7 +133,9 @@ p {
 
 .main {
     display: block;
-    padding: 20px;
+    height: -webkit-fill-available;
+    overflow: hidden;
+    width: -webkit-fill-available;
 }
 
 /* Animated gradient-background */
@@ -192,27 +200,10 @@ p {
     }
 }
 
-#page-1-weatherwidget {
-    position: absolute;
-    left: 50%;
-    top: 15%;
-    transform: translate(-50%, 0);
-    display: inline-flex;
-}
-
-#page-1-weatherwidget span {
-    content: "\00B0";
-    font-weight: 600;
-    font-size: 20px;
-    margin-top: 15px;
-    margin-left: 5px;
-    animation: fadeIn 3s normal forwards;
-}
-
 #page-1-currentlyPlaying {
     position: absolute;
     left: 50%;
-    bottom: 35%;
+    bottom: 10%;
     transform: translate(-50%, 0);
     padding-left: 50px;
     padding-right: 50px;

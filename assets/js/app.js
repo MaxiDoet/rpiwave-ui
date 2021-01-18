@@ -207,8 +207,15 @@ function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, a
     })
 }
 
+/*
+Old method. Now it makes a request to the python backend which then returns the track the user is currently playing
+function getSpotifyTrackTitle() {
+    return document.querySelectorAll('[data-testid="nowplaying-track-link"]')[0].textContent
+}
+*/
+
 // Register all apps
 // Spotify
 setTimeout(function() {
-    registerStreamingApplication("page-2-online", "spotify", "/assets/icons/apps/spotify.png", "fa-spotify", 5, true, "https://www.youtube.com/embed/tgbNymZ7vqY")    
+    registerStreamingApplication("page-2-online", "spotify", "/assets/icons/apps/spotify.png", "fa-spotify", 5, true, "https://open.spotify.com")    
 }, 1000)
