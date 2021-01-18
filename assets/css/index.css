@@ -165,8 +165,8 @@ p {
 }
 
 #page-1-clock {
-    font-weight: bold;
-    font-size: 150px;
+    font-weight: lighter;
+    font-size: 120px;
     animation: clockFadeIn 2s normal forwards;
 }
 
