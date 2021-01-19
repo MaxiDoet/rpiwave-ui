@@ -33,7 +33,7 @@ p {
     background-color: var(--theme-dark-first-color);
 
     color: var(--theme-dark-first-text-color);
-    font-family: Arial;
+    font-family: 'Roboto', sans-serif;
 }
 
 .page {
@@ -262,16 +262,38 @@ p {
   100% { width: 100%; }
 }
 
-#boot-progress {
-    height: 40px;
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30%;
+#page-0-logo text {
+    color: white;
+    stroke-width: 3px;
+    stroke-dashoffset: -800;
+    stroke-dasharray: 800;
+    animation-name: text;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
-#boot-progress .progress-bar-value {
-    animation: load 3s normal forwards;
+@keyframes loadingTextAnimation {
+  50% {
+    fill: transparent;
+  }
+  75% {
+    fill: transparent;
+    stroke-dashoffset: 0;
+    stroke-width: 3px;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: white;
+    stroke-width: 0px;
+  }
+}
+
+#page-0-loader {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40%;
 }
 
 .scrollcontainer-horizontal {
@@ -509,13 +531,14 @@ p {
 
 .app-loader {
     width: 100%;
-    height: 5%;
+    height: 3%;
 }
 
 .app.loading > .app-loader span {
     display: block;
     height: 50%;
     width: 0%;
+    border-radius: 10px;
     animation: appLoaderFillUp 5s normal forwards;
     background-color: var(--theme-dark-first-text-color);
 }
@@ -536,4 +559,25 @@ p {
     100% {
         opacity: 0;
     }
+}
+
+.ml9 {
+  position: relative;
+  font-weight: 200;
+  font-size: 4em;
+}
+
+.ml9 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+
+.ml9 .letter {
+  transform-origin: 50% 100%;
+  display: inline-block;
+  line-height: 1em;
 }

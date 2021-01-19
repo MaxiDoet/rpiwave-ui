@@ -4,18 +4,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/assets/css/index.css">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-VhBcF/php0Z/P5ZxlxaEx1GwqTQVIBu4G4giRWxTKOCjTxsPFETUDdVL5B6vYvOt" crossorigin="anonymous">
-    
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
         <!--For bypassing x-frame-options block-->
         <script src="https://unpkg.com/@ungap/custom-elements-builtin"></script>
         <script type="module" src="https://unpkg.com/x-frame-bypass"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     </head>
     <body>
         <div id="app">
             <div class="page" id="page-0">
                 <div class="main">
-                    <div class="progress-bar" id="boot-progress">
-                        <div class="progress-bar-value"></div>
-                    </div>
+                    <h1 class="ml9">
+  <span class="text-wrapper">
+    <span class="letters">RPIWave</span>
+  </span>
+</h1>
+
+                    <img id="page-0-loader" src="http://samherbert.net/svg-loaders/svg-loaders/tail-spin.svg"></img>
                 </div>
             </div>
             <div class="page" id="page-1">
@@ -23,13 +31,13 @@
                     <h2 id="page-1-clock">13:45</h2>
                     <h2 id="page-1-date">13/01/2021</h2>
                     <div class="mediawidget mediawidget-clock" id="page-2-mediawidget">
-                            <i class="mediawidget-icon fa-2x"></i>
-                            <!--<img></img>-->
-                            <div>
-                                <p class="mediawidget-title">Fear | Neffex</p>
-                                <p class="mediawidget-time">1:35 / 1:45</p>
-                            </div>
+                        <i class="mediawidget-icon fa-2x"></i>
+                        <!--<img></img>-->
+                        <div>
+                            <p class="mediawidget-title">Fear | Neffex</p>
+                            <p class="mediawidget-time">1:35 / 1:45</p>
                         </div>
+                    </div>
                 </div>
             </div>
             <div class="page" id="page-2">
