@@ -1,8 +1,18 @@
 var appContainer = document.querySelector("#app")
 
+var radio = {
+    currentlyPlayingSource: "",
+    currentlyPlayingTitle: "",
+    currentlyPlayingSubTitle: "", // In most cases this is the artist or the radio station
+    currentPage: 1,
+    lastPage: 1 
+}
+
 var applications = []
 
 function setPage(pageNum) {
+    radio["lastPage"] = radio["currentPage"]
+    radio["currentPage"] = pageNum
     var c = appContainer.children;
     var i;
     for (i = 0; i < c.length; i++) {
@@ -48,7 +58,7 @@ document.querySelector('#page-2-home').addEventListener("click", function() {
     setPage(1)
 })
 document.querySelector('#page-2-back').addEventListener("click", function() {
-    //Todo: if latest action is set go back to it
+    setPage(radio["lastPage"])
 })
 
 //Page 3
@@ -56,7 +66,7 @@ document.querySelector('#page-3-home').addEventListener("click", function() {
     setPage(2)
 })
 document.querySelector('#page-3-back').addEventListener("click", function() {
-    setPage(2)
+    setPage(radio["lastPage"])
 })
 
 //Page 4
@@ -64,7 +74,7 @@ document.querySelector('#page-4-home').addEventListener("click", function() {
     setPage(2)
 })
 document.querySelector('#page-4-back').addEventListener("click", function() {
-    setPage(2)
+    setPage(radio["lastPage"])
 })
 
 //Page 5
@@ -72,7 +82,7 @@ document.querySelector('#page-5-home').addEventListener("click", function() {
     setPage(2)
 })
 document.querySelector('#page-5-back').addEventListener("click", function() {
-    setPage(2)
+    setPage(radio["lastPage"])
 })
 
 /*Old spotify app 
@@ -118,37 +128,48 @@ for (let i = 0; i < webFrames.length; i++) {
 }
 */
 
-function setCurrentlyPlaying(widgetId, sourceType, mediaTitle) {
-    widget = document.querySelector(`#${widgetId}`)
-    title = widget.querySelector('.mediawidget-title')
-    icon = widget.querySelector('.mediawidget-icon') 
+function setCurrentlyPlaying(playing, mediaTitle, sourceType, applicationNum) {
+    widgets = document.querySelectorAll(`.mediawidget`)
 
-    console.log(`Updating mediaWidget (id: ${widgetId})`)
+
+    console.log(`Updating mediaWidgets`)
     console.log(` Title: ${mediaTitle}`)
     console.log(` Sourcetype: ${sourceType}`)
 
-    /* 
-    Source types:
-     - 0 Web stream
-     - 1 Radio
-     - 2 Online service eg. Spotify, ...
-     - 3 UPNP
-    */
+    for (let i = 0; i < widgets.length; i++) {
+        title = widgets[i].querySelector('.mediawidget-title')
+        icon = widgets[i].querySelector('.mediawidget-icon') 
 
-    icon.classList.remove("fa-signal-stream")
-    icon.classList.remove("fa-broadcast-tower")
+        /* 
+        Source types:
+            - 0 Web stream
+            - 1 Radio
+            - 2 Online service eg. Spotify, ...
+            - 3 UPNP
+        */
 
-    switch (sourceType) {
-       case 0:  
-        icon.classList.add("fa-signal-stream")
-       case 1:
-        icon.classList.add("fa-broadcast-tower")
-       case 2:
+        icon.classList.remove("fa-signal-stream")
+        icon.classList.remove("fa-broadcast-tower")
 
-       case 3:
-   }
+        switch (sourceType) {
+            case 0:  
+                icon.classList.add("fa-signal-stream")
+            case 1:
+                icon.classList.add("fa-broadcast-tower")
+            case 2:
+                icon.classList.add("fab")
+                icon.classList.add(`${applications[applicationNum]["icon"]}`)
+            case 3:
+        }
 
-   title.textContent = mediaTitle
+        title.textContent = mediaTitle
+
+        if (playing) {
+            widgets[i].style.display = "inline-flex"
+        } else {
+            widgets[i].style.display = "none"
+        }
+    };
 }
 
 function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, appPage, webFrame, frameUrl) {
@@ -182,7 +203,7 @@ function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, a
 
    scrollContainer.appendChild(app)
 
-   applications.push({id: `${id}`, page: `${appPage}`, webFrame: `${webFrame}`, frameUrl: `${frameUrl}`})
+   applications.push({id: `${id}`, page: `${appPage}`, webFrame: `${webFrame}`, frameUrl: `${frameUrl}`, icon: `${icon}`})
 
     if (webFrame) {
         appFrame = appElement.querySelector(`#page-${appPage}-frame`)
