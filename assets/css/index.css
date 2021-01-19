@@ -36,6 +36,11 @@ p {
     font-family: 'Roboto', sans-serif;
 }
 
+@font-face { 
+    font-family: "droidlogo"; 
+    src: url("/assets/fonts/droid-logo.ttf"); 
+}
+
 .page {
 
 }
@@ -169,6 +174,27 @@ p {
     margin-top: 20%;
 }
 
+.ml9 {
+  position: relative;
+  font-weight: 200;
+  font-size: 70px;
+  font-family: droidlogo;
+}
+
+.ml9 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+
+.ml9 .letter {
+  transform-origin: 50% 100%;
+  display: inline-block;
+  line-height: 1em;
+}
 
 #page-0-loader {
     display: block;
@@ -274,17 +300,6 @@ p {
 @keyframes load {
   0% { width: 0; }
   100% { width: 100%; }
-}
-
-#page-0-logo text {
-    color: white;
-    stroke-width: 3px;
-    stroke-dashoffset: -800;
-    stroke-dasharray: 800;
-    animation-name: text;
-    animation-duration: 4s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 }
 
 .scrollcontainer-horizontal {
@@ -550,25 +565,4 @@ p {
     100% {
         opacity: 0;
     }
-}
-
-.ml9 {
-  position: relative;
-  font-weight: 200;
-  font-size: 4em;
-}
-
-.ml9 .text-wrapper {
-  position: relative;
-  display: inline-block;
-  padding-top: 0.2em;
-  padding-right: 0.05em;
-  padding-bottom: 0.1em;
-  overflow: hidden;
-}
-
-.ml9 .letter {
-  transform-origin: 50% 100%;
-  display: inline-block;
-  line-height: 1em;
 }

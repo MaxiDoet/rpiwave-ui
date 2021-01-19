@@ -13,8 +13,20 @@ var applications = []
 function setPage(pageNum) {
     radio["lastPage"] = radio["currentPage"]
     radio["currentPage"] = pageNum
-    var c = appContainer.children;
+
+    tmp = anime({
+        targets: `#page-${pageNum}`,
+        opacity: [0, 1],
+        duration: 500,
+        easing: 'easeInOutSine',
+        elasticity: 600,
+        delay: (el, i) => 45 * (i+1)
+    });
+
+    setTimeout(function() {
+        var c = appContainer.children;
     var i;
+    
     for (i = 0; i < c.length; i++) {
         if (c[i] != null && c[i].classList.contains("page")) {
             c[i].classList.remove("active");
@@ -24,6 +36,8 @@ function setPage(pageNum) {
     if (c[pageNum]) {
         c[pageNum].classList.add("active");
     }
+    }, 100)
+
 }
 
 const stationElements = document.querySelectorAll(".station");
@@ -51,7 +65,7 @@ setPage(0);
 // Page 0 No eventhandlers
 // Page 1
 document.querySelector('#page-1').addEventListener("click", function() {
-    setPage(2)
+   setPage(2)
 })
 // Page 2
 document.querySelector('#page-2-home').addEventListener("click", function() {
@@ -238,7 +252,8 @@ function getSpotifyTrackTitle() {
 // Register all apps
 // Spotify
 setTimeout(function() {
-    registerStreamingApplication("page-2-online", "spotify", "/assets/icons/apps/spotify.png", "fa-spotify", 5, true, "https://open.spotify.com")    
+    registerStreamingApplication("page-2-online", "spotify", "/assets/icons/apps/spotify.png", "fa-spotify", 5, true, "https://open.spotify.com")
+    registerStreamingApplication("page-2-online", "ytmusic", "/assets/icons/apps/ytmusic.png", "fa-play-circle", 5, true, "https://music.youtube.com")        
 }, 1000)
 
 setTimeout(function() {

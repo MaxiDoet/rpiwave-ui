@@ -28,12 +28,12 @@
                         var textWrapper = document.querySelector('.ml9 .letters');
                         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-                       test = anime({
+                        tmp = anime({
                             targets: '.ml9 .letter',
                             loop: true,
-                            scale: [0.9, 1],
-                            opacity: [0.3, 1],
-                            duration: 1500,
+                            translateY: [10, 0],
+                            opacity: [0.5, 1],
+                            duration: 500,
                             direction: 'alternate',
                             easing: 'easeInOutSine',
                             elasticity: 600,
