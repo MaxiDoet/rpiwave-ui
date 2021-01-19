@@ -164,6 +164,20 @@ p {
     100%{background-position:0% 31%}
 }
 
+#page-0-loading-text {
+    text-align: center;
+    margin-top: 20%;
+}
+
+
+#page-0-loader {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+
+
 #page-1-clock {
     font-weight: lighter;
     font-size: 120px;
@@ -271,29 +285,6 @@ p {
     animation-duration: 4s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-}
-
-@keyframes loadingTextAnimation {
-  50% {
-    fill: transparent;
-  }
-  75% {
-    fill: transparent;
-    stroke-dashoffset: 0;
-    stroke-width: 3px;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    fill: white;
-    stroke-width: 0px;
-  }
-}
-
-#page-0-loader {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40%;
 }
 
 .scrollcontainer-horizontal {

@@ -17,12 +17,31 @@
         <div id="app">
             <div class="page" id="page-0">
                 <div class="main">
-                    <h1 class="ml9">
-  <span class="text-wrapper">
-    <span class="letters">RPIWave</span>
-  </span>
-</h1>
+                    <h1 class="ml9" id="page-0-loading-text">
+                        <span class="text-wrapper">
+                            <span class="letters">RPIWave</span>
+                        </span>
+                    </h1>
+                    
+                   <script>
+                       // Wrap every letter in a span
+                        var textWrapper = document.querySelector('.ml9 .letters');
+                        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
+                       test = anime({
+                            targets: '.ml9 .letter',
+                            loop: true,
+                            scale: [0.9, 1],
+                            opacity: [0.3, 1],
+                            duration: 1500,
+                            direction: 'alternate',
+                            easing: 'easeInOutSine',
+                            elasticity: 600,
+                            delay: (el, i) => 45 * (i+1)
+                        });
+
+                        
+                    </script>
                     <img id="page-0-loader" src="http://samherbert.net/svg-loaders/svg-loaders/tail-spin.svg"></img>
                 </div>
             </div>

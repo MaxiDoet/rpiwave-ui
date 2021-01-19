@@ -241,23 +241,8 @@ setTimeout(function() {
     registerStreamingApplication("page-2-online", "spotify", "/assets/icons/apps/spotify.png", "fa-spotify", 5, true, "https://open.spotify.com")    
 }, 1000)
 
+setTimeout(function() {
+    setPage(1)
+}, 10000)
+
 //Example: setCurrentlyPlaying: setCurrentlyPlaying(true, "Fear", 2, 0)
-
-// Wrap every letter in a span
-var textWrapper = document.querySelector('.ml9 .letters');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-anime.timeline({loop: true})
-  .add({
-    targets: '.ml9 .letter',
-    scale: [0, 1],
-    duration: 1500,
-    elasticity: 600,
-    delay: (el, i) => 45 * (i+1)
-  }).add({
-    targets: '.ml9',
-    opacity: 0,
-    duration: 1000,
-    easing: "easeOutExpo",
-    delay: 1000
-  });
