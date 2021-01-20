@@ -139,7 +139,7 @@ p {
 .main {
     display: block;
     height: -webkit-fill-available;
-    overflow: scroll;
+    overflow: auto;
     width: -webkit-fill-available;
 }
 

@@ -269,7 +269,7 @@ setTimeout(function() {
 }, 1000)
 
 setTimeout(function() {
-    //setPage(1)
+    setPage(1)
 }, 10000)
 
 //Example: setCurrentlyPlaying: setCurrentlyPlaying(true, "Fear", 2, 0)
