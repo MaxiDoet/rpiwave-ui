@@ -40,6 +40,11 @@ function setPage(pageNum) {
 
 }
 
+function openInNewTab(url) {
+  var win = window.open(url, '_blank');
+  win.focus();
+}
+
 const stationElements = document.querySelectorAll(".station");
 
 for (let i = 0; i < stationElements.length; i++) {
@@ -245,7 +250,7 @@ function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, a
             app.classList.add('loading')
 
             if (webFrame) {
-                appFrame.src = frameUrl
+                openInNewTab(frameUrl)
             }
         }
     })
