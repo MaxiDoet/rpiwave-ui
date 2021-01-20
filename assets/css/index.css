@@ -139,7 +139,7 @@ p {
 .main {
     display: block;
     height: -webkit-fill-available;
-    overflow: hidden;
+    overflow: scroll;
     width: -webkit-fill-available;
 }
 
@@ -305,6 +305,16 @@ p {
 .scrollcontainer-horizontal {
     white-space: nowrap;
     overflow: auto; 
+}
+
+.scrollcontainer-horizontal-label {
+    margin-left: 50px;
+    margin-top: 10px;
+    font-weight: 100;
+}
+
+.scrollcontainer-horizontal:last-of-type {
+    margin-bottom: 100px;
 }
 
 .station {

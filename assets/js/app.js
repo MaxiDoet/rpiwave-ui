@@ -59,7 +59,7 @@ for (let i = 0; i < appElements.length; i++) {
 }
 */
 
-setPage(0);
+setPage(1);
 
 // Register all eventhandlers
 // Page 0 No eventhandlers
@@ -96,6 +96,14 @@ document.querySelector('#page-5-home').addEventListener("click", function() {
     setPage(2)
 })
 document.querySelector('#page-5-back').addEventListener("click", function() {
+    setPage(radio["lastPage"])
+})
+
+//Page 6
+document.querySelector('#page-6-home').addEventListener("click", function() {
+    setPage(2)
+})
+document.querySelector('#page-6-back').addEventListener("click", function() {
     setPage(radio["lastPage"])
 })
 
@@ -187,8 +195,8 @@ function setCurrentlyPlaying(playing, mediaTitle, sourceType, applicationNum) {
 }
 
 function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, appPage, webFrame, frameUrl) {
-    scrollContainer = document.querySelector(`#${scrollContainerId}`)
-    appElement = document.querySelector(`#page-${appPage}`).querySelector('.main')
+    var scrollContainer = document.querySelector(`#${scrollContainerId}`)
+    var appElement = document.querySelector(`#page-${appPage}`).querySelector('.main')
 
     /* Reference
     <div class="app" id="app-spotify">
@@ -199,15 +207,15 @@ function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, a
     </div>  
     */
 
-   app = document.createElement('div')
+   var app = document.createElement('div')
    app.setAttribute('class', 'app')
    app.setAttribute('id', `app-${id}`)
 
-   appBanner = document.createElement('img')
+   var appBanner = document.createElement('img')
    appBanner.setAttribute('class', 'app-banner')
    appBanner.src = bannerPath
 
-   appLoader = document.createElement('div')
+   var appLoader = document.createElement('div')
    appLoader.setAttribute('class', 'app-loader')
    appLoaderSpan = document.createElement('span')
    appLoader.appendChild(appLoaderSpan)
@@ -216,11 +224,12 @@ function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, a
    app.appendChild(appLoader)
 
    scrollContainer.appendChild(app)
+   console.log(`Debug (app): ${app}`)
 
    applications.push({id: `${id}`, page: `${appPage}`, webFrame: `${webFrame}`, frameUrl: `${frameUrl}`, icon: `${icon}`})
 
     if (webFrame) {
-        appFrame = appElement.querySelector(`#page-${appPage}-frame`)
+        var appFrame = appElement.querySelector(`#page-${appPage}-frame`)
         
         appFrame.addEventListener('load', function() {
             app.classList.remove("loading")    
@@ -253,11 +262,14 @@ function getSpotifyTrackTitle() {
 // Spotify
 setTimeout(function() {
     registerStreamingApplication("page-2-online", "spotify", "/assets/icons/apps/spotify.png", "fa-spotify", 5, true, "https://open.spotify.com")
-    registerStreamingApplication("page-2-online", "ytmusic", "/assets/icons/apps/ytmusic.png", "fa-play-circle", 5, true, "https://music.youtube.com")        
+    registerStreamingApplication("page-2-online", "ytmusic", "/assets/icons/apps/ytmusic.png", "fa-play-circle", 6, true, "https://music.youtube.com")        
+
+    //registerStreamingApplication("page-2-local", "ytmusic", "/assets/icons/apps/ytmusic.png", "fa-play-circle", 5, true, "https://music.youtube.com")        
+
 }, 1000)
 
 setTimeout(function() {
-    setPage(1)
+    //setPage(1)
 }, 10000)
 
 //Example: setCurrentlyPlaying: setCurrentlyPlaying(true, "Fear", 2, 0)
