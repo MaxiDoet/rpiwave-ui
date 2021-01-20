@@ -308,9 +308,11 @@ p {
 }
 
 .scrollcontainer-horizontal-label {
-    margin-left: 50px;
+    font-size: larger;
+    margin-left: 70px;
     margin-top: 10px;
-    font-weight: 100;
+    color: var(--theme-dark-secondary-text-color);
+    font-weight: 300;
 }
 
 .scrollcontainer-horizontal:last-of-type {

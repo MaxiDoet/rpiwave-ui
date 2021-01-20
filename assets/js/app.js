@@ -59,7 +59,7 @@ for (let i = 0; i < appElements.length; i++) {
 }
 */
 
-setPage(1);
+setPage(0);
 
 // Register all eventhandlers
 // Page 0 No eventhandlers
