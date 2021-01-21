@@ -17,6 +17,7 @@
         <div id="app">
             <div class="page" id="page-0">
                 <div class="main">
+                    <audio id="page-0-audio" src="/assets/sounds/dab_soundlogo.wav"></audio>
                     <h1 class="ml9" id="page-0-loading-text">
                         <span class="text-wrapper">
                             <span class="letters">RPIWave</span>
@@ -58,7 +59,7 @@
                         var textWrapper = document.querySelector('.ml9 .letters');
                         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-                        /*
+                        
                         // Normal boot animation
                         tmp = anime({
                             targets: '.ml9 .letter',
@@ -71,7 +72,7 @@
                             elasticity: 600,
                             delay: (el, i) => 45 * (i+1)
                         });
-                        */
+                        
 
                         /*
                         // Update animation
@@ -125,11 +126,14 @@
 
                 </div>
                 <div class="main">
-                    <p class="scrollcontainer-horizontal-label">Local Media</p>
-                    <div class="scrollcontainer-horizontal" id="page-2-local">                       
+                    <p class="scrollcontainer-horizontal-label">Web Stations</p>
+                    <div class="scrollcontainer-horizontal" id="page-2-webstations">                       
                     </div>
-                    <p class="scrollcontainer-horizontal-label">Streaming</p>
-                    <div class="scrollcontainer-horizontal" id="page-2-online">                       
+                    <p class="scrollcontainer-horizontal-label">DAB+ Stations</p>
+                    <div class="scrollcontainer-horizontal" id="page-2-dabplusstations">                       
+                    </div>
+                    <p class="scrollcontainer-horizontal-label">Apps</p>
+                    <div class="scrollcontainer-horizontal" id="page-2-apps">                       
                     </div>
                 </div>
             </div>
@@ -345,33 +349,13 @@
                 </div>
             </div>
             <div class="page" id="page-5">
-                <div class="navbar">
-                    <div class="navbar-left">
-                        <i class="navbar-icon fal fa-4x fa-home" id="page-5-home"></i>
-                        <i class="navbar-icon fal fa-4x fa-chevron-left" id="page-5-back"></i>
-                    </div>
-                    <p class="navbar-title">Spotify</p>
-                    <div class="navbar-right">
-                        <p class="navbar-clock">14:35</p>
-                    </div>
-
-                </div>
+                <i class="back-overlay fal fa-3x fa-home"></i>
                 <div class="main" style="padding: 0">
                     <iframe id="page-5-frame" allow="encrypted-media" class="webframe" src=""></iframe>
                 </div>
             </div>
             <div class="page" id="page-6">
-                <div class="navbar">
-                    <div class="navbar-left">
-                        <i class="navbar-icon fal fa-4x fa-home" id="page-6-home"></i>
-                        <i class="navbar-icon fal fa-4x fa-chevron-left" id="page-6-back"></i>
-                    </div>
-                    <p class="navbar-title">Youtube Music</p>
-                    <div class="navbar-right">
-                        <p class="navbar-clock">14:35</p>
-                    </div>
-
-                </div>
+                <i class="back-overlay fal fa-3x fa-home"></i>
                 <div class="main" style="padding: 0">
                     <iframe id="page-6-frame" allow="encrypted-media" class="webframe" src=""></iframe>
                 </div>

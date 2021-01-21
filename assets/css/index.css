@@ -513,7 +513,7 @@ p {
 
 .webframe {
     width: -webkit-fill-available;
-    height: 90%;
+    height: 100%;
     padding: 0;
     margin: 0;
     border: none;
@@ -577,4 +577,10 @@ p {
     100% {
         opacity: 0;
     }
+}
+
+.back-overlay {
+    position: absolute;
+    top: 2%;
+    left: 2%;  
 }

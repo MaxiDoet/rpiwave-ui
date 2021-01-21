@@ -1,6 +1,9 @@
 var appContainer = document.querySelector("#app")
 
 var radio = {
+    currentlyPlayingStationId: "",
+    currentlyPlayingStationName: "",
+    currentlyPlayingStationType: "",
     currentlyPlayingSource: "",
     currentlyPlayingTitle: "",
     currentlyPlayingSubTitle: "", // In most cases this is the artist or the radio station
@@ -9,6 +12,8 @@ var radio = {
 }
 
 var applications = []
+var webStations = {}
+var dabPlusStations = {}
 
 function setPage(pageNum) {
     radio["lastPage"] = radio["currentPage"]
@@ -96,21 +101,14 @@ document.querySelector('#page-4-back').addEventListener("click", function() {
     setPage(radio["lastPage"])
 })
 
-//Page 5
-document.querySelector('#page-5-home').addEventListener("click", function() {
-    setPage(2)
-})
-document.querySelector('#page-5-back').addEventListener("click", function() {
-    setPage(radio["lastPage"])
-})
+/* Register all back buttons in webframes*/
+const backOverlayButtons = document.querySelectorAll(".back-overlay");
 
-//Page 6
-document.querySelector('#page-6-home').addEventListener("click", function() {
-    setPage(2)
-})
-document.querySelector('#page-6-back').addEventListener("click", function() {
-    setPage(radio["lastPage"])
-})
+for (let i = 0; i < backOverlayButtons.length; i++) {
+    backOverlayButtons[i].addEventListener("click", function() {
+       setPage(2)
+    });
+}
 
 /*Old spotify app 
 document.querySelector('#app-spotify').addEventListener("click", function() {
@@ -199,6 +197,50 @@ function setCurrentlyPlaying(playing, mediaTitle, sourceType, applicationNum) {
     };
 }
 
+function registerStation(scrollContainerId, data) {
+    var scrollContainer = document.querySelector(`#${scrollContainerId}`)
+
+   var station = document.createElement('div')
+   station.setAttribute('class', 'station')
+   station.setAttribute('id', `station-${data["id"]}`)
+
+   var stationBanner = document.createElement('img')
+   stationBanner.setAttribute('class', 'station-banner')
+   //stationBanner.src = data["bannerPath"]
+
+   var stationLoader = document.createElement('div')
+   stationLoader.setAttribute('class', 'station-loader')
+   stationLoaderSpan = document.createElement('span')
+   stationLoader.appendChild(stationLoaderSpan)
+
+   station.appendChild(stationBanner)
+   station.appendChild(stationLoader)
+
+   station.dataset.stationId = data["id"]
+
+   scrollContainer.appendChild(station)
+   console.log(`Debug (station): ${station}`)
+
+   switch (data["type"]) {
+       case 0:
+           webStations[data["id"]] = {'name': data["name"], 'bannerPath': data["bannerPath"]}
+
+           station.addEventListener('click', function() {
+                stationId = station.dataset.stationId
+
+                playStation(stationId, data)
+            })
+        case 1:
+           dabPlusStations[data["id"]] = {'name': data["name"], 'bannerPath': data["bannerPath"]}
+
+           station.addEventListener('click', function() {
+                stationId = station.dataset.stationId
+
+                playStation(stationId, data)
+            })
+        }
+}
+
 function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, appPage, webFrame, frameUrl) {
     var scrollContainer = document.querySelector(`#${scrollContainerId}`)
     var appElement = document.querySelector(`#page-${appPage}`).querySelector('.main')
@@ -250,12 +292,39 @@ function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, a
             app.classList.add('loading')
 
             if (webFrame) {
-                openInNewTab(frameUrl)
+                appFrame.src = frameUrl
+                setPage(appPage)
             }
         }
     })
 }
 
+function playStation(id, data) {
+    /*
+    Types:
+        0 Web Station (Stream)
+        1 DAB+ Station
+    */
+
+    currentlyPlayingStationId = data["id"]
+    currentlyPlayingStationName = data["name"]
+    currentlyPlayingStationType = data["type"]
+
+    switch(data["type"]) {
+        case 0:
+            /* Tell python backend to play the mpeg stream */
+            document.querySelector('#page-3').querySelector('.navbar-title')                        
+            setPage(4)
+        case 1:
+            /* Do nothing for now :-) */
+            console.log("Do nothing for now :-)")
+    }
+}
+
+function playAudio(path) {
+    var audio = new Audio(path);
+    audio.play();
+}
 /*
 Old method. Now it makes a request to the python backend which then returns the track the user is currently playing
 function getSpotifyTrackTitle() {
@@ -266,12 +335,15 @@ function getSpotifyTrackTitle() {
 // Register all apps
 // Spotify
 setTimeout(function() {
-    registerStreamingApplication("page-2-online", "spotify", "/assets/icons/apps/spotify.png", "fa-spotify", 5, true, "https://open.spotify.com")
-    registerStreamingApplication("page-2-online", "ytmusic", "/assets/icons/apps/ytmusic.png", "fa-play-circle", 6, true, "https://music.youtube.com")        
+    registerStation("page-2-webstations", 'testData = {name: "Bayern 3", id: "bayern3", bannerPath: "test", type: 0}')
 
-    //registerStreamingApplication("page-2-local", "ytmusic", "/assets/icons/apps/ytmusic.png", "fa-play-circle", 5, true, "https://music.youtube.com")        
-
+    registerStreamingApplication("page-2-apps", "spotify", "/assets/icons/apps/spotify.png", "fa-spotify", 5, true, "https://open.spotify.com")
+    registerStreamingApplication("page-2-apps", "ytmusic", "/assets/icons/apps/ytmusic.png", "fa-play-circle", 6, true, "https://music.youtube.com")        
 }, 1000)
+
+setTimeout(function() {
+    //document.querySelector('#page-0-audio').play()
+}, 100)
 
 setTimeout(function() {
     setPage(1)
