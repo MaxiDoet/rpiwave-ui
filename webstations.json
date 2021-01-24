@@ -1,0 +1,20 @@
+{
+  "stations": [
+    {
+      "name": "Bayern 3",
+      "id": "bayern3",
+      "banner": "https://www.radioszene.de/wp-content/uploads/2013/10/bayern3-logo-1280x720.jpg",
+      "streamLow": "http://br-br3-live.cast.addradio.de/br/br3/live/mp3/low",
+      "streamMid": "http://br-br3-live.cast.addradio.de/br/br3/live/mp3/mid",
+      "streamHigh": ""
+    },
+    {
+      "name": "Bayern 2",
+      "id": "bayern2",
+      "banner": "https://www.radioszene.de/wp-content/uploads/2018/01/Bayern2-logo-fb-min-1280x720.png",
+      "streamLow": "http://br-br2-sued.cast.addradio.de/br/br2/sued/mp3/low",
+      "streamMid": "http://br-br2-sued.cast.addradio.de/br/br2/sued/mp3/mid",
+      "streamHigh": ""
+    }
+  ]
+}
