@@ -179,12 +179,16 @@ function setCurrentlyPlaying(playing, mediaTitle, sourceType, applicationNum) {
         switch (sourceType) {
             case 0:  
                 icon.classList.add("fa-signal-stream")
+                break;
             case 1:
                 icon.classList.add("fa-broadcast-tower")
+                break;
             case 2:
                 icon.classList.add("fab")
                 icon.classList.add(`${applications[applicationNum]["icon"]}`)
+                break;
             case 3:
+                break;
         }
 
         title.textContent = mediaTitle
@@ -301,12 +305,28 @@ function playWebStation(data) {
     setPage(4)
     document.querySelector("#page-4").querySelectorAll('.navbar-title')[0].textContent = data["name"]
     playStream(data["streamMid"])
+    setCurrentlyPlaying(true, data["name"], 0)
 }
 
-function playStream(url) {
+function stopPlayback() {
+    //setCurrentlyPlaying(false)
     var request = new XMLHttpRequest()
     request.addEventListener("load", function() {
         // Do nothing
+    })
+
+    request.open("GET", `/api/stop_playback`)
+    request.send()
+}
+
+function playStream(url) {
+    if (radio["currentlyPlayingSource"] == 0) {
+        stopPlayback()
+    }
+
+    var request = new XMLHttpRequest()
+    request.addEventListener("load", function() {
+        radio["currentlyPlayingSource"]=0
     })
 
     request.open("GET", `/api/play_stream?url=${url}`)
