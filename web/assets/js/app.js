@@ -270,7 +270,6 @@ function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, a
    app.appendChild(appLoader)
 
    scrollContainer.appendChild(app)
-   console.log(`Debug (app): ${app}`)
 
    applications.push({id: `${id}`, page: `${appPage}`, webFrame: `${webFrame}`, frameUrl: `${frameUrl}`, icon: `${icon}`})
 
@@ -331,6 +330,13 @@ function loadWebStations() {
         }
     })
 
+    /* Doesn't work :-(
+    request.addEventListener("error", function() {
+        // Display an 'error' station
+        errorData = {name: "Error", id: "error", streamMid: "", banner: "/assets/banners/error_station.png"}
+        registerStation('page-2-webstations', errorData, 0)
+    })
+    */
     request.open("GET", "/api/get_station_list")
     request.send()
 }
@@ -357,5 +363,34 @@ setTimeout(function() {
 setTimeout(function() {
     setPage(1)
 }, 10000)
+
+/* Update every time text */
+setInterval(function() {
+    var timeTexts = document.querySelectorAll('.time')
+
+    let now = new Date();  
+    let options = {  
+        hour: "2-digit", minute: "2-digit", hour12: false  
+    };  
+
+
+    for (let i = 0; i < timeTexts.length; i++) {
+        timeTexts[i].textContent = now.toLocaleTimeString("en-us", options)
+    }    
+}, 10)
+
+setInterval(function() {
+    var dateTexts = document.querySelectorAll('.date')
+
+    var today = new Date();
+    var mm = today.getMonth() + 1;
+    var dd = today.getDate();
+    var yyyy = today.getFullYear();
+    var format = dd + '/' + mm + '/' + yyyy
+
+    for (let i = 0; i < dateTexts.length; i++) {
+        dateTexts[i].textContent = format
+    }    
+}, 10)
 
 //Example: setCurrentlyPlaying: setCurrentlyPlaying(true, "Fear", 2, 0)
