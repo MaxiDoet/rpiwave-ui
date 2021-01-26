@@ -6,6 +6,7 @@ import radio
 
 app = Flask("rpiwave-ui", static_folder="web/assets/", static_url_path="/assets")
 
+
 @app.route('/')
 def index():
     return send_file("web/index.html")
@@ -22,6 +23,13 @@ def play_stream():
     if not url: return "No url!"
 
     radio.playStream(url)
+    return ""
+
+
+@app.route('/api/stop_playback')
+def stop_playback():
+    radio.stopPlayback()
+    return ""
 
 
 app.run(host= '0.0.0.0', port=80)
