@@ -300,6 +300,7 @@ function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, a
 function playWebStation(data) {
     setPage(4)
     document.querySelector("#page-4").querySelectorAll('.navbar-title')[0].textContent = data["name"]
+    document.querySelector("#page-4").querySelectorAll('.radio-player-station')[0].textContent = data["name"]
     playStream(data["streamMid"])
 }
 

@@ -418,8 +418,8 @@ p {
 }
 
 .radio-player-cover {
-    width: 348px;
-    height: 348px;
+    width: 200px;
+    height: 200px;
 }
 
 .radio-player-controls {
@@ -445,15 +445,9 @@ p {
 }
 
 .radio-player-title {
-    margin-top: 20px;
-    font-weight: lighter;
-    font-size: 30px;
-}
-
-.radio-player-artist {
     margin-top: 10px;
     font-weight: lighter;
-    font-size: 15px;
+    font-size: 30px;
 }
 
 #webRadioControls {
