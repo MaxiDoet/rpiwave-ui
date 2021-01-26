@@ -3,6 +3,7 @@
         <title>rpiwave-ui</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/assets/css/index.css">
+        <link rel="stylesheet" href="/assets/css/ui.css">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-VhBcF/php0Z/P5ZxlxaEx1GwqTQVIBu4G4giRWxTKOCjTxsPFETUDdVL5B6vYvOt" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -143,179 +144,29 @@
                         <i class="navbar-icon fal fa-4x fa-home" id="page-3-home"></i>
                         <i class="navbar-icon fal fa-4x fa-chevron-left" id="page-3-back"></i>
                     </div>
-                    <p class="navbar-title">Web Radio</p>
+                    <p class="navbar-title">Settings</p>
                     <div class="navbar-right">
                         <p class="navbar-clock time"></p>
                     </div>
 
                 </div>
                 <div class="main">
-                    <div id="page-3-latest" class="scrollcontainer-horizontal">
-                        <div class="station">
-                            <img class="station-banner" src="https://www.radioszene.de/wp-content/uploads/2013/10/bayern3-logo-1280x720.jpg"></img>
-                            <span class="station-title">Bayern 3</span>      
-                            <div class="station-loader">
-                                <span></span>
-                            </div>               
+                    <div id="page-3-settings">
+                        <h3 class="settings-header -mgt--20">Home Screen</h3>
+                        <div class="ui-switch -mgl--20 -mgt--20">
+                            <input type="checkbox" id="toggle_homescreen_news" class="ui-switch__checkbox"/>
+                            <label for="toggle_homescreen_news" class="ui-switch__input"></label>
+                            <label for="toggle_homescreen_news" class="ui-switch__label">Display latest news</label>
                         </div>
-                        <div class="station">
-                            <img class="station-banner" src="https://www.br.de/ressourcen/bilder/programmfahne_mit_logo/b2-wellenlogo-102~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.png?version=0af80"></img>
-                            <span class="station-title">Bayern 2</span>      
-                            <div class="station-loader">
-                                <span></span>
-                            </div>  
+                        <h3 class="settings-header -mgt--20">Software</h3>
+                        <div class="ui-switch -mgl--20 -mgt--20">
+                            <input type="checkbox" id="toggle_software_updateatnight" class="ui-switch__checkbox"/>
+                            <label for="toggle_software_updateatnight" class="ui-switch__input"></label>
+                            <label for="toggle_software_updateatnight" class="ui-switch__label">Install updates at night (11:00 PM - 4:00 AM)</label>
                         </div>
-                        <div class="station">
-                            <img class="station-banner" src="https://www.br.de/radio/bayern1/bayern-1-logo-2018-100~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.jpg?version=8e522"></img>
-                            <span class="station-title">Bayern 1</span>
-                            <div class="station-loader">
-                                <span></span>
-                            </div>                                
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                    </div>
-                    <div id="page-3-radio" class="scrollcontainer-horizontal">
-                        <div class="station">
-                            <img class="station-banner" src="https://www.radioszene.de/wp-content/uploads/2013/10/bayern3-logo-1280x720.jpg"></img>
-                            <span class="station-title">Bayern 3</span>      
-                            <div class="station-loader">
-                                <span></span>
-                            </div>               
-                        </div>
-                        <div class="station">
-                            <img class="station-banner" src="https://www.br.de/ressourcen/bilder/programmfahne_mit_logo/b2-wellenlogo-102~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.png?version=0af80"></img>
-                            <span class="station-title">Bayern 2</span>      
-                            <div class="station-loader">
-                                <span></span>
-                            </div>  
-                        </div>
-                        <div class="station">
-                            <img class="station-banner" src="https://www.br.de/radio/bayern1/bayern-1-logo-2018-100~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.jpg?version=8e522"></img>
-                            <span class="station-title">Bayern 1</span>
-                            <div class="station-loader">
-                                <span></span>
-                            </div>                                
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                    </div>
-                    <div id="page-3-podcast" class="scrollcontainer-horizontal">
-                        <div class="station">
-                            <img class="station-banner" src="https://www.radioszene.de/wp-content/uploads/2013/10/bayern3-logo-1280x720.jpg"></img>
-                            <span class="station-title">Bayern 3</span>      
-                            <div class="station-loader">
-                                <span></span>
-                            </div>               
-                        </div>
-                        <div class="station">
-                            <img class="station-banner" src="https://www.br.de/ressourcen/bilder/programmfahne_mit_logo/b2-wellenlogo-102~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.png?version=0af80"></img>
-                            <span class="station-title">Bayern 2</span>      
-                            <div class="station-loader">
-                                <span></span>
-                            </div>  
-                        </div>
-                        <div class="station">
-                            <img class="station-banner" src="https://www.br.de/radio/bayern1/bayern-1-logo-2018-100~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.jpg?version=8e522"></img>
-                            <span class="station-title">Bayern 1</span>
-                            <div class="station-loader">
-                                <span></span>
-                            </div>                                
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
-                        </div>
-                        <div class="station">
-                                                        
-                        </div>
-                        <div class="station">
-                            
+                        <div class="ui-property -mgl--20 -mgt--20">
+                            <p class="ui-property__property">Version</p>
+                            <p class="ui-property__value">1.0</p>
                         </div>
                     </div>
                 </div>

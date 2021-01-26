@@ -1,0 +1,143 @@
+/* Margins */
+.-mgt--5 {
+    margin-top: 5px !important;
+}
+.-mgt--10 {
+    margin-top: 10px !important;
+}
+.-mgt--15 {
+    margin-top: 15px !important;
+}
+.-mgt--20 {
+    margin-top: 20px !important;
+}
+.-mgt--25 {
+    margin-top: 25px !important;
+}
+.-mgt--30 {
+    margin-top: 30px !important;
+}
+.-mgt--35 {
+    margin-top: 35px !important;
+}
+.-mgt--40 {
+    margin-top: 40px !important;
+}
+
+.-mgl--5 {
+    margin-left: 5px !important;
+}
+.-mgl--10 {
+    margin-left: 10px !important;
+}
+.-mgl--15 {
+    margin-left: 15px !important;
+}
+.-mgl--20 {
+    margin-left: 20px !important;
+}
+
+/* Switch
+<div class="ui-switch">
+    <input type="checkbox" id="toggle" class="ui-switch__checkbox"/>
+    <label for="toggle" class="ui-switch__input"></label>
+</div>
+*/
+
+.ui-switch {
+    display: flex;
+    line-height: 1.25rem;
+    margin: .25rem 0;
+    position: relative;
+}
+
+.ui-switch__input { 
+    position: relative;
+    display: inline-block;
+    width: 40px !important;
+    height: 20px !important;
+    background-color: rgb(121, 121, 121);
+    border-radius: 20px !important;
+    flex-direction: column;
+    font-size: .6875rem;
+    line-height: 1.25rem;
+}
+
+.ui-switch__input::after {
+  content: '';
+  position: absolute;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50%;
+  background-color: white;
+  top: 1px !important;
+  left: 1px !important;
+  transition: all 0.3s;
+}
+
+.ui-switch__checkbox {
+    display: none;
+}
+
+.ui-switch__checkbox:checked + .ui-switch__input::after {
+  left : 20px !important; 
+}
+.ui-switch__checkbox:checked + .ui-switch__input {
+  background-color: #7983ff;
+}
+
+.ui-switch__label {
+    align-items: flex-start;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: .875rem;
+    font-weight: 300;
+    line-height: 1.25rem;
+    margin-bottom: 0;
+    margin-left: .5rem;
+    padding: .125rem 0;
+}
+
+/* Divider
+<div class="ui-divider"></div>
+*/
+
+.ui-divider {
+    border: 0;
+    border-top: .0625rem solid rgba(0,0,0,.12);
+    margin: .5rem 0;
+}
+
+/* Property Field
+<div class="ui-property">
+    <p class="ui-property__property"></p>
+    <p class="ui-property__value"></p>
+<div>
+*/
+
+.ui-property {
+    display: flex;
+    line-height: 1.25rem;
+    margin: .25rem 0;
+    position: relative;
+}
+
+.ui-property__property {
+    width: fit-content;
+    flex-direction: column;
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.25rem;
+}
+
+.ui-property__value {
+    align-items: flex-start;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    margin-bottom: 0;
+    margin-left: .5rem;
+    padding: .125rem 0;
+}

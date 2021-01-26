@@ -578,3 +578,13 @@ p {
     top: 2%;
     left: 2%;  
 }
+
+#page-3-settings {
+    margin-top: 5%;
+    margin-left: 30%;
+    width: 50%;
+}
+
+.settings-header {
+    font-weight: 400;
+}
