@@ -309,6 +309,7 @@ function playWebStation(data) {
     setPage(4)
     document.querySelector("#page-4").querySelectorAll('.navbar-title')[0].textContent = data["name"]
     document.querySelector("#page-4").querySelectorAll('.radio-player-station')[0].textContent = data["name"]
+    document.querySelector("#page-4").querySelectorAll('.radio-player-cover')[0].src = data["icon"]
     playStream(data["streamMid"])
     setCurrentlyPlaying(true, data["name"], 0)
 }
