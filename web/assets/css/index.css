@@ -18,7 +18,22 @@ p {
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    width: 16px;
+}
+::-webkit-scrollbar-thumb {
+    background: #dadce0;
+    background-clip: padding-box;
+    border: 4px solid transparent;
+    border-radius: 8px;
+    box-shadow: none;
+    min-height: 50px;
+}
 
+::-webkit-scrollbar-track {
+    background: none;
+    border: none;
+}
 
 #app {
     --theme-dark-first-color: #252525;
