@@ -85,6 +85,10 @@ document.querySelector('#page-2-back').addEventListener("click", function() {
     setPage(radio["lastPage"])
 })
 
+document.querySelector('#page-2-settings').addEventListener("click", function() {
+    setPage(3)
+})
+
 //Page 3
 document.querySelector('#page-3-home').addEventListener("click", function() {
     setPage(2)

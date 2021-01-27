@@ -603,3 +603,13 @@ p {
 .settings-header {
     font-weight: 400;
 }
+
+#page-2-settings {
+    position: absolute;
+    top: 7%;
+    right: 15%;
+    transform: translate(-50%, -50%);
+    color: var(--theme-dark-first-text-color);
+    font-weight: lighter;
+    font-size: xx-large;
+}
