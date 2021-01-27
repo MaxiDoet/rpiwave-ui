@@ -141,3 +141,64 @@
     margin-left: .5rem;
     padding: .125rem 0;
 }
+
+/* Select 
+<div class="ui-select">
+  <select class="ui-select__select">
+    <option>Option 1</option>
+    <option>Option 2</option>
+    <option>Option 3</option>
+  </select>
+</div>
+*/
+
+.ui-select {
+    width: 200px;
+    position: relative;
+}
+
+.ui-select::before {
+    font-family: "Font Awesome 5 Pro";
+    content: "\f0dd";
+    font-size: 20px;
+    font-weight: 900;
+    position: absolute;
+    right: 15px;
+    top: 7px;
+    color: #fff;
+}
+
+.ui-select__select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    width: 100%;
+    height: 40px;
+    -moz-padding-start: calc(10px - 3px);
+    padding-left: 10px;
+    border-radius: 30px;
+    background: url(/assets/3D3D3D-0.8.png) repeat;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+.ui-select__select:active {
+    outline: none;
+    border: none;
+}
+
+.ui-select__select::selection {
+    outline: none;
+    border: none;
+}
+
+.ui-select__select:focus {
+    outline: none;
+    border: none;
+}
+
+.ui-select__option {
+    background-color: gray;
+}

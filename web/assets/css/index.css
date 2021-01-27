@@ -22,7 +22,7 @@ p {
     width: 16px;
 }
 ::-webkit-scrollbar-thumb {
-    background: #dadce0;
+    background: #3c3c3c;
     background-clip: padding-box;
     border: 4px solid transparent;
     border-radius: 8px;
