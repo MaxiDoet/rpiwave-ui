@@ -26,8 +26,33 @@ def load_webstation_list():
     except:
         return None
 
-"""
-playStream("http://br-br3-live.cast.addradio.de/br/br3/live/mp3/mid")
-while 1:
-    continue
-"""
+def update_config_value(property, value):
+    try:
+        configFile = open("config.json", "r")
+        configOld = json.loads(configFile.read())
+        configFile.close()
+
+        configOld[property] = value
+        configFile = open("config.json", "w")
+        configFile.write(json.dumps(configOld))
+        configFile.close()
+        return True
+    except Exception as ex:
+        print(ex)
+        return False
+
+def get_config_value(property):
+    try:
+        configFile = open("config.json", "r")
+        value = json.loads(configFile.read())[property]
+        configFile.close()
+        return value
+    except:
+        return 0
+
+def get_config():
+    try:
+        configFile = open("config.json", "r")
+        return configFile.read()
+    except:
+        return 0

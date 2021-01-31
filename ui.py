@@ -3,9 +3,16 @@ from flask import Flask, send_file, url_for, request
 import json
 
 import radio
+import podcast
 
 app = Flask("rpiwave-ui", static_folder="web/assets/", static_url_path="/assets")
 
+
+def status(success):
+    if success: 
+        return '{"status": "success"}' 
+    else:
+         return '{"status": "error"}'
 
 @app.route('/')
 def index():
@@ -31,5 +38,35 @@ def stop_playback():
     radio.stopPlayback()
     return ""
 
+@app.route('/api/update_config_value')
+def update_config_value():
+    property = request.args.get("property")
+    new_value = request.args.get("value")
+
+    if radio.update_config_value(property, new_value):
+        return status(True)
+    else:
+        return status(False)
+
+@app.route('/api/get_config_value')
+def get_config_value():
+    property = request.args.get("property")
+    return radio.get_config_value(property)
+
+@app.route('/api/get_config')
+def get_config():
+    return radio.get_config()
+
+@app.route('/api/get_random_podcasts')
+def get_random_podcasts():
+    count = request.args.get("count")
+
+    return podcast.get_random_podcasts(int(count))
+
+@app.route('/api/get_podcast_data_by_id')
+def get_podcast_data_by_id():
+    id = request.args.get("id")
+
+    return podcast.get_data_by_id(id)
 
 app.run(host= '0.0.0.0', port=80)

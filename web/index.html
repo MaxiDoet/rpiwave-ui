@@ -13,6 +13,7 @@
         <script type="module" src="https://unpkg.com/x-frame-bypass"></script>
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>
 
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
@@ -22,7 +23,6 @@
         <div id="app">
             <div class="page" id="page-0">
                 <div class="main">
-                    <audio id="page-0-audio" src="/assets/sounds/dab_soundlogo.wav"></audio>
                     <h1 class="ml9" id="page-0-loading-text">
                         <span class="text-wrapper">
                             <span class="letters">RPIWave</span>
@@ -135,8 +135,11 @@
                     <p class="scrollcontainer-horizontal-label">Web Stations</p>
                     <div class="scrollcontainer-horizontal" id="page-2-webstations">                       
                     </div>
-                    <p class="scrollcontainer-horizontal-label">DAB+ Stations</p>
+                    <!--<p class="scrollcontainer-horizontal-label">DAB+ Stations</p>
                     <div class="scrollcontainer-horizontal" id="page-2-dabplusstations">                       
+                    </div>-->
+                    <p class="scrollcontainer-horizontal-label">Podcasts</p>
+                    <div class="scrollcontainer-horizontal" id="page-2-podcasts">                       
                     </div>
                     <p class="scrollcontainer-horizontal-label">Apps</p>
                     <div class="scrollcontainer-horizontal" id="page-2-apps">                       
@@ -159,22 +162,22 @@
                     <div id="page-3-settings">
                         <h3 class="settings-header -mgt--20">Home Screen</h3>
                         <div class="ui-switch -mgl--20 -mgt--20">
-                            <input type="checkbox" id="toggle_homescreen_news" class="ui-switch__checkbox"/>
+                            <input data-property="displayNews" type="checkbox" id="toggle_homescreen_news" class="ui-switch__checkbox"/>
                             <label for="toggle_homescreen_news" class="ui-switch__input"></label>
                             <label for="toggle_homescreen_news" class="ui-switch__label">Display latest news</label>
                         </div>
                         <h3 class="settings-header -mgt--20">Streaming</h3>
                         <h4 class="settings-header -mgt--20 -mgl--20">Quality</h4>
                         <div class="ui-select -mgl--20 -mgt--10">
-                            <select class="ui-select__select">
-                                <option class="ui-select__option">Low</option>
-                                <option class="ui-select__option">Mid</option>
-                                <option class="ui-select__option">High (If avaiable)</option>
+                            <select data-property="streamingQuality" class="ui-select__select">
+                                <option value="low" class="ui-select__option">Low</option>
+                                <option value="mid" class="ui-select__option">Mid</option>
+                                <option value="high" class="ui-select__option">High (If avaiable)</option>
                             </select>
                         </div>
                         <h3 class="settings-header -mgt--20">Software</h3>
                         <div class="ui-switch -mgl--20 -mgt--20">
-                            <input type="checkbox" id="toggle_software_updateatnight" class="ui-switch__checkbox"/>
+                            <input data-property="updateOverNight" type="checkbox" id="toggle_software_updateatnight" class="ui-switch__checkbox"/>
                             <label for="toggle_software_updateatnight" class="ui-switch__input"></label>
                             <label for="toggle_software_updateatnight" class="ui-switch__label">Install updates at night (11:00 PM - 4:00 AM)</label>
                         </div>
