@@ -1,6 +1,7 @@
 var appContainer = document.querySelector("#app")
 
 var radio = {
+    settings: {},
     currentlyPlayingStationId: "",
     currentlyPlayingStationName: "",
     currentlyPlayingStationType: "",
@@ -13,6 +14,7 @@ var radio = {
 
 var applications = []
 var webStations = {}
+var podcasts = {}
 var dabPlusStations = {}
 
 function setPage(pageNum) {
@@ -57,105 +59,6 @@ for (let i = 0; i < stationElements.length; i++) {
         stationElements[i].classList.add('loading')
     });
 }
-
-/*
-const appElements = document.querySelectorAll(".app");
-
-for (let i = 0; i < appElements.length; i++) {
-    console.log(appElements[i])
-    appElements[i].addEventListener("click", function() {
-       appElements[i].classList.add('loading')
-    });
-}
-*/
-
-setPage(0);
-
-// Register all eventhandlers
-// Page 0 No eventhandlers
-// Page 1
-document.querySelector('#page-1').addEventListener("click", function() {
-   setPage(2)
-})
-// Page 2
-document.querySelector('#page-2-home').addEventListener("click", function() {
-    setPage(1)
-})
-document.querySelector('#page-2-back').addEventListener("click", function() {
-    setPage(radio["lastPage"])
-})
-
-document.querySelector('#page-2-settings').addEventListener("click", function() {
-    setPage(3)
-})
-
-//Page 3
-document.querySelector('#page-3-home').addEventListener("click", function() {
-    setPage(2)
-})
-document.querySelector('#page-3-back').addEventListener("click", function() {
-    setPage(radio["lastPage"])
-})
-
-//Page 4
-document.querySelector('#page-4-home').addEventListener("click", function() {
-    setPage(2)
-})
-document.querySelector('#page-4-back').addEventListener("click", function() {
-    setPage(radio["lastPage"])
-})
-
-/* Register all back buttons in webframes*/
-const backOverlayButtons = document.querySelectorAll(".back-overlay");
-
-for (let i = 0; i < backOverlayButtons.length; i++) {
-    backOverlayButtons[i].addEventListener("click", function() {
-       setPage(2)
-    });
-}
-
-/*Old spotify app 
-document.querySelector('#app-spotify').addEventListener("click", function() {
-    webFrame = document.querySelector('#page-5-frame')
-    webFrame.addEventListener("load", function() {
-        try {
-            document.querySelectorAll('#onetrust-banner-sdk')[0].remove()
-        } catch {
-            
-        }
-
-        setPage(5)
-        document.querySelector('#app-spotify').classList.remove("loading")    
-        document.querySelector('#app-spotify').classList.add("loaded")    
-    }) 
-
-    if (document.querySelector('#app-spotify').classList.contains("loaded")) {
-        setPage(5)
-    }
-
-    if (!document.querySelector('#app-spotify').classList.contains("loaded")) {
-        document.querySelector('#app-spotify').classList.add('loading')
-    }
-
-    webFrame.src="https://open.spotify.com/"
-})
-*/
-
-/*
-Old iframe loader works on powerful devices but not on a raspberry pi 3!
-
-const webFrames = document.querySelectorAll(".webframe");
-var webFramesLeft = webFrames.length
-
-for (let i = 0; i < webFrames.length; i++) {
-    webFrames[i].addEventListener("load", function() {
-       webFramesLeft--;
-       if (webFramesLeft <= 0) {
-            setPage(1)           
-       }
-    });
-}
-*/
 
 function setCurrentlyPlaying(playing, mediaTitle, sourceType, applicationNum) {
     widgets = document.querySelectorAll(`.mediawidget`)
@@ -248,6 +151,36 @@ function registerStation(scrollContainerId, data, type) {
        }
 }
 
+function registerPodcast(scrollContainerId, data) {
+    var scrollContainer = document.querySelector(`#${scrollContainerId}`)
+ 
+    var podcast = document.createElement('div')
+    podcast.setAttribute('class', 'podcast')
+    podcast.setAttribute('id', `podcast-${data["id"]}`)
+    podcast.setAttribute("data-id", data["id"])
+ 
+    var podcastBanner = document.createElement('img')
+    podcastBanner.setAttribute('class', 'podcast-banner')
+    podcastBanner.src = data["logo"]
+ 
+    podcast.appendChild(podcastBanner)
+  
+    scrollContainer.appendChild(podcast)
+    console.log(`Debug (podcast): ${podcast}`)
+    
+    var request = new XMLHttpRequest()
+    request.addEventListener("load", function() {
+        podcasts[data["id"], JSON.parse(request.responseText)]
+    })
+
+    request.open("GET", `/api/get_podcast_data_by_id?id=${data["id"]}`)
+    request.send()
+
+    podcast.addEventListener("click", function() {
+        
+    })
+ }
+ 
 function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, appPage, webFrame, frameUrl) {
     var scrollContainer = document.querySelector(`#${scrollContainerId}`)
     var appElement = document.querySelector(`#page-${appPage}`).querySelector('.main')
@@ -305,12 +238,71 @@ function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, a
     })
 }
 
+function registerEpisode(episodeContainer, episodeData) {
+    container = document.getElementById(episodeContainer)
+
+    /* Reference
+    <div class="page-7-podcast-episodes-entry"><p class="page-7-podcast-episodes-entry-number">72</p><p class="page-7-podcast-episodes-entry-title">Test Episode</p></div>
+    */
+
+    episode = document.createElement('div')
+    episode.setAttribute("id", `episode-${episodeData["number"]}`)
+    episode.setAttribute("class", "page-7-podcast-episodes-entry")
+
+    episodeNumber = document.createElement('p', episodeData["number"])
+    episodeNumber.setAttribute("class", "page-7-podcast-episodes-entry-number")
+
+    episodeTitle = document.createElement('p', episodeData["title"])
+    episodeTitle.setAttribute("class", "page-7-podcast-episodes-entry-title")
+}
+
+function getPodcastDataById(id) {
+    //setCurrentlyPlaying(false)
+    var request = new XMLHttpRequest()
+    request.addEventListener("load", function() {
+        return JSON.parse(request.responseText)
+    })
+
+    request.open("GET", `/api/get_podcast_data_by_id?id=${id}`)
+    request.send()
+}
+
+function playEpisode(podcastData, number) {
+    try {
+        playStream(podcastData["episodes"][number]["stream"])
+        setCurrentlyPlaying(true, podcastData["episodes"][number]["name"], 0)
+    } catch {
+        return 0;
+    }
+}
+
 function playWebStation(data) {
     setPage(4)
     document.querySelector("#page-4").querySelectorAll('.navbar-title')[0].textContent = data["name"]
     document.querySelector("#page-4").querySelectorAll('.radio-player-station')[0].textContent = data["name"]
     document.querySelector("#page-4").querySelectorAll('.radio-player-cover')[0].src = data["icon"]
-    playStream(data["streamMid"])
+    
+    
+    switch (radio["settings"]["streamingQuality"]) {
+        case "low": 
+            if (data["streamLow"] != "") {
+                playStream(data["streamLow"])
+            }
+            break;
+        case "mid":
+            if (data["streamMid"] != "") {
+                playStream(data["streamMid"])
+            }
+            break;
+        case "high":
+            if (data["streamHigh"] != "") {
+                playStream(data["streamHigh"])
+            } else {
+                playStream(data["streamMid"])
+            }
+            break;
+    }
+
     setCurrentlyPlaying(true, data["name"], 0)
 }
 
@@ -367,6 +359,184 @@ function loadWebStations() {
     request.send()
 }
 
+function loadRandomPodcasts() {
+    var request = new XMLHttpRequest()
+    request.addEventListener("load", function() {
+        var podcastData = JSON.parse(request.responseText)
+        console.log(`Loaded ${podcastData.length} podcast(s)`)
+
+        for (let i = 0; i < podcastData.length; i++) {
+            registerPodcast("page-2-podcasts", podcastData[i])
+            console.log("Registered podcast")
+        }
+    })
+
+    /* Doesn't work :-(
+    request.addEventListener("error", function() {
+        // Display an 'error' station
+        errorData = {name: "Error", id: "error", streamMid: "", banner: "/assets/banners/error_station.png"}
+        registerStation('page-2-webstations', errorData, 0)
+    })
+    */
+    request.open("GET", "/api/get_random_podcasts?count=5")
+    request.send()
+}
+
+function updateSettingsValue(property, value) {
+    var request = new XMLHttpRequest()
+    request.addEventListener("load", function() {
+        console.log(`Updated '${property}'\`s value to ${value}`)
+    })
+    
+    request.open("GET", `/api/update_config_value?property=${property}&value=${value}`)
+    request.send()
+}
+
+function loadSettings() {
+    var request = new XMLHttpRequest()
+    request.addEventListener("load", function() {
+        radio["settings"] = JSON.parse(request.responseText)
+
+        var settingCheckboxes = document.querySelector("#page-3-settings").querySelectorAll("input[type=checkbox]") 
+        var settingSelects = document.querySelector("#page-3-settings").querySelectorAll("select")
+        document.temp = settingSelects
+
+        for (let i=0; i < settingCheckboxes.length; i++) {
+            try {
+                settingCheckboxes[i].checked = (radio["settings"][settingCheckboxes[i].dataset.property] == "true") 
+            } catch {
+                continue;
+            }
+        }
+
+        for (let i=0; i < settingSelects.length; i++) {
+            try {
+                settingSelects[i].value = radio["settings"][settingSelects[i].dataset.property] 
+            } catch {
+                continue;
+            }
+        }
+
+        for (let i=0; i < settingCheckboxes.length; i++) {
+            settingCheckboxes[i].addEventListener("change", function() {
+                updateSettingsValue(settingCheckboxes[i].dataset.property, settingCheckboxes[i].checked)
+            })
+        }
+
+        for (let i=0; i < settingSelects.length; i++) {
+            settingSelects[i].addEventListener("change", function() {
+                updateSettingsValue(settingSelects[i].dataset.property, settingSelects[i].selectedOptions[0].value)
+            })
+        }
+    })
+    
+    request.open("GET", `/api/get_config`)
+    request.send()
+}
+
+/*
+const appElements = document.querySelectorAll(".app");
+
+for (let i = 0; i < appElements.length; i++) {
+    console.log(appElements[i])
+    appElements[i].addEventListener("click", function() {
+       appElements[i].classList.add('loading')
+    });
+}
+*/
+
+setPage(0);
+
+// Register all eventhandlers
+// Page 0 No eventhandlers
+// Page 1
+document.querySelector('#page-1').addEventListener("click", function() {
+   setPage(2)
+})
+// Page 2
+document.querySelector('#page-2-home').addEventListener("click", function() {
+    setPage(1)
+})
+document.querySelector('#page-2-back').addEventListener("click", function() {
+    setPage(radio["lastPage"])
+})
+
+document.querySelector('#page-2-settings').addEventListener("click", function() {
+    setPage(3)
+})
+
+//Page 3
+document.querySelector('#page-3-home').addEventListener("click", function() {
+    setPage(2)
+})
+document.querySelector('#page-3-back').addEventListener("click", function() {
+    setPage(radio["lastPage"])
+})
+
+loadSettings()
+
+//Page 4
+document.querySelector('#page-4-home').addEventListener("click", function() {
+    stopPlayback()
+    setPage(2)
+})
+document.querySelector('#page-4-back').addEventListener("click", function() {
+    stopPlayback()
+    setPage(radio["lastPage"])
+})
+
+/* Register all back buttons in webframes*/
+const backOverlayButtons = document.querySelectorAll(".back-overlay");
+
+for (let i = 0; i < backOverlayButtons.length; i++) {
+    backOverlayButtons[i].addEventListener("click", function() {
+       setPage(2)
+    });
+}
+
+/*Old spotify app 
+document.querySelector('#app-spotify').addEventListener("click", function() {
+    webFrame = document.querySelector('#page-5-frame')
+    webFrame.addEventListener("load", function() {
+        try {
+            document.querySelectorAll('#onetrust-banner-sdk')[0].remove()
+        } catch {
+            
+        }
+
+        setPage(5)
+        document.querySelector('#app-spotify').classList.remove("loading")    
+        document.querySelector('#app-spotify').classList.add("loaded")    
+    }) 
+
+    if (document.querySelector('#app-spotify').classList.contains("loaded")) {
+        setPage(5)
+    }
+
+    if (!document.querySelector('#app-spotify').classList.contains("loaded")) {
+        document.querySelector('#app-spotify').classList.add('loading')
+    }
+
+    webFrame.src="https://open.spotify.com/"
+})
+*/
+
+/*
+Old iframe loader works on powerful devices but not on a raspberry pi 3!
+
+const webFrames = document.querySelectorAll(".webframe");
+var webFramesLeft = webFrames.length
+
+for (let i = 0; i < webFrames.length; i++) {
+    webFrames[i].addEventListener("load", function() {
+       webFramesLeft--;
+       if (webFramesLeft <= 0) {
+            setPage(1)           
+       }
+    });
+}
+*/
+
 /*
 Old method. Now it makes a request to the python backend which then returns the track the user is currently playing
 function getSpotifyTrackTitle() {
@@ -382,8 +552,14 @@ setTimeout(function() {
 }, 1000)
 
 setTimeout(function() {
-    //document.querySelector('#page-0-audio').play()
+    var sound = new Howl({
+        src: ['/assets/sounds/dab_soundlogo.wav']
+      });
+      
+    //sound.play();
+
     loadWebStations()
+    loadRandomPodcasts()
 }, 100)
 
 setTimeout(function() {

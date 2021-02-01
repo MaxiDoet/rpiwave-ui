@@ -346,6 +346,7 @@ p {
     opacity: 1;
 }
 
+/*
 .station:active {
     transition: 0.3s;
     opacity: 0.3;
@@ -355,6 +356,7 @@ p {
     transition: 0.3s;
     opacity: 0.3;
 }
+*/ 
 
 .station:hover > .station-title {
     opacity: 1;
@@ -421,6 +423,61 @@ p {
     100% {
         opacity: 0;
     }
+}
+
+.podcast {
+    width: 250px;
+    height: 180px;
+    background-color: var(--theme-dark-secondary-color);
+    margin: 30px;
+    display: inline-block;
+    background-size: cover;
+    transition: 0.3s;
+    position: relative;
+    opacity: 1;
+}
+
+.podcast:hover > .podcast-title {
+    opacity: 1;
+    animation: stationTitleFadeIn 0.3s normal forwards;
+}
+
+@keyframes podcastTitleFadeIn {
+  0% {
+    top: 60%;
+  }
+  100% {
+    top: 70%;
+  }
+}
+
+.podcast-title {
+    opacity: 0;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.podcast-banner {
+    border-radius: 2px;
+    width: 250px;
+    height: 180px;
+}
+
+.podcast-loader {
+    width: 100%;
+    height: 5%;
+}
+
+.podcast.loading > .podcast-loader span {
+    display: block;
+    height: 50%;
+    width: 0%;
+    animation: stationLoaderFillUp 2s normal forwards;
+    background-color: var(--theme-dark-first-text-color);
 }
 
 .radio-player {
@@ -612,4 +669,37 @@ p {
     color: var(--theme-dark-first-text-color);
     font-weight: lighter;
     font-size: xx-large;
+}
+
+#page-7-podcast-cover {
+    margin: 20px;
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    float: left;
+}
+
+#page-7-podcast-episodes {
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 400px;
+    display: inline-block;
+    background-color: var(--theme-dark-first-color);
+}
+
+.page-7-podcast-episodes-entry {
+    margin: 10px;
+    padding: 10px;
+    background-color: var(--theme-dark-third-color);
+}
+
+.page-7-podcast-episodes-entry-title {
+    font-weight: 200;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.page-7-podcast-episodes-entry-number {
+    float: left;
 }

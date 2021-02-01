@@ -1,0 +1,22 @@
+{
+    "podcasts": [
+        {
+            "name": "Das Coronavirus-Update",
+            "id": "52347",
+            "logo": "https://img.ardmediathek.de/standard/00/72/45/17/84/-295433861/1x1/420?mandant=ard",
+            "description": "Kein Tag vergeht ohne neue Nachrichten zum Coronavirus Sars-CoV-2. Längst haben wir uns an Maßnahmen wie Mundschutz, Abstand und Hygieneregeln gewöhnt. Und noch immer ist kein Ende der Pandemie in Sicht. In unserem wöchentlichen Podcast wollen wir verlässlich über neue Erkenntnisse der Forschung informieren. Wie steht es um einen Impfstoff? Wie entwickelt sich die Test-Strategie? Besteht Hoffnung auf ein Medikament? Die NDR Wissenschaftsredakteurin Korinna Hennig spricht dazu im Wechsel mit Christian Drosten, Leiter der Virologie in der Berliner Charité, und mit Sandra Ciesek, Leiterin des Instituts für Medizinische Virologie am Universitätsklinikum Frankfurt.",
+            "episodes": [
+                {
+                    "title": "Dem Virus zuvorkommen",
+                    "stream": "https://mediandr-a.akamaihd.net/download/podcasts/podcast4684/AU-20210126-1706-5300.mp3",
+                    "number": "73"
+                },
+                {
+                    "title": "Menschen, Maßnahmen, Mutationen",
+                    "stream": "https://mediandr-a.akamaihd.net/progressive/2021/0119/AU-20210119-1643-2000.mp3",
+                    "number": "72"
+                }
+            ]
+        }
+    ]
+}
