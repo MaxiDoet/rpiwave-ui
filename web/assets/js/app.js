@@ -177,7 +177,25 @@ function registerPodcast(scrollContainerId, data) {
     request.send()
 
     podcast.addEventListener("click", function() {
-        
+        // Remove all old episodes
+        var elements = document.querySelectorAll("#page-7-podcast-episodes *")
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].remove()
+        }
+
+        for (let i = 0; i < data["episodes"].length; i++) {
+            registerEpisode("page-7-podcast-episodes", data, data["episodes"][i])
+        }
+
+        var elements = document.querySelector("#page-7").querySelectorAll(".page-7-podcast-episodes-entry")
+        document.test4 = elements
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].addEventListener("click", function() {
+                playEpisode(data, i)
+            })    
+        }
+ 
+        setPage(7)
     })
  }
  
@@ -238,22 +256,29 @@ function registerStreamingApplication(scrollContainerId, id, bannerPath, icon, a
     })
 }
 
-function registerEpisode(episodeContainer, episodeData) {
+function registerEpisode(episodeContainer, podcastData, episodeData) {
     container = document.getElementById(episodeContainer)
 
     /* Reference
     <div class="page-7-podcast-episodes-entry"><p class="page-7-podcast-episodes-entry-number">72</p><p class="page-7-podcast-episodes-entry-title">Test Episode</p></div>
     */
 
-    episode = document.createElement('div')
+    var episode = document.createElement('div')
     episode.setAttribute("id", `episode-${episodeData["number"]}`)
     episode.setAttribute("class", "page-7-podcast-episodes-entry")
 
-    episodeNumber = document.createElement('p', episodeData["number"])
+    var episodeNumber = document.createElement('p')
     episodeNumber.setAttribute("class", "page-7-podcast-episodes-entry-number")
+    episodeNumber.textContent = episodeData["number"]
 
-    episodeTitle = document.createElement('p', episodeData["title"])
+    var episodeTitle = document.createElement('p')
     episodeTitle.setAttribute("class", "page-7-podcast-episodes-entry-title")
+    episodeTitle.textContent = episodeData["title"]
+
+    episode.appendChild(episodeNumber)
+    episode.appendChild(episodeTitle)
+
+    container.appendChild(episode)
 }
 
 function getPodcastDataById(id) {
@@ -268,12 +293,17 @@ function getPodcastDataById(id) {
 }
 
 function playEpisode(podcastData, number) {
-    try {
-        playStream(podcastData["episodes"][number]["stream"])
-        setCurrentlyPlaying(true, podcastData["episodes"][number]["name"], 0)
-    } catch {
-        return 0;
-    }
+    console.log(`Playing number ${number}`)
+    console.log(podcastData)    
+
+    playStream(podcastData["episodes"][number]["stream"])
+    setCurrentlyPlaying(true, podcastData["episodes"][number]["name"], 0)
+
+    document.querySelector("#page-8").querySelectorAll(".podcast-player-cover")[0].src = podcastData["logo"]
+    document.querySelector("#page-8").querySelectorAll(".podcast-player-title")[0].textContent = podcastData["episodes"][number]["title"]
+
+    setPage(8)
+
 }
 
 function playWebStation(data) {
@@ -482,6 +512,22 @@ document.querySelector('#page-4-home').addEventListener("click", function() {
 })
 document.querySelector('#page-4-back').addEventListener("click", function() {
     stopPlayback()
+    setPage(radio["lastPage"])
+})
+
+//Page 7
+document.querySelector('#page-7-home').addEventListener("click", function() {
+    setPage(2)
+})
+document.querySelector('#page-7-back').addEventListener("click", function() {
+    setPage(radio["lastPage"])
+})
+
+//Page 8
+document.querySelector('#page-8-home').addEventListener("click", function() {
+    setPage(2)
+})
+document.querySelector('#page-8-back').addEventListener("click", function() {
     setPage(radio["lastPage"])
 })
 
