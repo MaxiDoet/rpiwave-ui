@@ -15,6 +15,59 @@
                     "title": "Menschen, Maßnahmen, Mutationen",
                     "stream": "https://mediandr-a.akamaihd.net/progressive/2021/0119/AU-20210119-1643-2000.mp3",
                     "number": "72"
+                },
+                {
+                    "title": "Mehr Licht am Ende des Tunnels",
+                    "stream": "https://mediandr-a.akamaihd.net/progressive/2021/0112/AU-20210112-1653-2900.mp3",
+                    "number": "71"
+                },
+                {
+                    "title": "Die Mutanten im Blick behalten",
+                    "stream": "https://mediandr-a.akamaihd.net/progressive/2021/0105/AU-20210105-1727-0400.mp3",
+                    "number": "70"
+                }
+            ]
+        },
+        {
+            "name": "$hit Could Be Worse",
+            "id": "56563",
+            "logo": "https://ssl-static.libsyn.com/p/assets/d/d/c/4/ddc48752e48db87b/New_New_Logo.jpg",
+            "description": "Charlie Classic and friends talk about topics ranging from the weirdest murder stories to the dumbest fad of the day.",
+            "episodes": [
+                {
+                    "title": "Bad Citizen",
+                    "stream": "https://hwcdn.libsyn.com/p/5/c/9/5c9db0fa8a6e604e/SCBW_EP51.mp3?c_id=31361939&forcedn=attachment&cs_id=31361939&destination_id=593847&expiration=1612557915&hwt=a2f0b5d061a040c02c8986fdda583fa4",
+                    "number": "51"
+                },
+                {
+                    "title": "Drunk Nascar",
+                    "stream": "https://hwcdn.libsyn.com/p/6/f/3/6f3badaa20b05069/SCBW_EP50.mp3?c_id=29163416&forcedn=attachment&cs_id=29163416&destination_id=593847&expiration=1612557927&hwt=3a194ce1413e214718a5e3b4dbbb30bf",
+                    "number": "50"
+                },
+                {
+                    "title": "#ClearThePipes",
+                    "stream": "https://hwcdn.libsyn.com/p/5/8/f/58f4af5b6008ee7f/EP49.mp3?c_id=27797363&forcedn=attachment&cs_id=27797363&destination_id=593847&expiration=1612556532&hwt=ca7959709bc3d1054ac69a511a69aa95",
+                    "number": "49"
+                },
+                {
+                    "title": "Now Kith",
+                    "stream": "https://hwcdn.libsyn.com/p/1/5/6/156a953e47952513/SCBW_EP48.mp3?c_id=27231461&forcedn=attachment&cs_id=27231461&destination_id=593847&expiration=1612556288&hwt=bfb9bcc3b06bef4ff036f8d1161554e4",
+                    "number": "48"
+                },
+                {
+                    "title": "Wow",
+                    "stream": "https://hwcdn.libsyn.com/p/e/9/9/e992aac87f83145f/SCBW_EP47.mp3?c_id=26207582&forcedn=attachment&cs_id=26207582&destination_id=593847&expiration=1612558312&hwt=897702805fc63cbef2ab2e385800c80a",
+                    "number": "47"
+                },
+                {
+                    "title": "Horny and Abstinent",
+                    "stream": "https://hwcdn.libsyn.com/p/e/6/d/e6d114dc0552e8b7/SCBW_EP46Tianna.mp3?c_id=25332524&forcedn=attachment&cs_id=25332524&destination_id=593847&expiration=1612558035&hwt=1e964a77fa929142405b2b36ba983d93",
+                    "number": "46"
+                },
+                {
+                    "title": "Halloween Christmas Bee",
+                    "stream": "https://hwcdn.libsyn.com/p/0/7/2/072fee560e6902e7/SCBW_EP45.mp3?c_id=24195668&forcedn=attachment&cs_id=24195668&destination_id=593847&expiration=1612559316&hwt=daccdf26c8c7db6160eb82f86ce9bea4",
+                    "number": "45"
                 }
             ]
         }

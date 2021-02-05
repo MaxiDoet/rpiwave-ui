@@ -78,6 +78,7 @@ function setCurrentlyPlaying(playing, mediaTitle, sourceType, applicationNum) {
             - 1 Radio
             - 2 Online service eg. Spotify, ...
             - 3 UPNP
+            - 4 Podcast
         */
 
         icon.classList.remove("fa-signal-stream")
@@ -96,6 +97,9 @@ function setCurrentlyPlaying(playing, mediaTitle, sourceType, applicationNum) {
                 break;
             case 3:
                 break;
+            case 4:
+                icon.classList.add("fal")
+                icon.classList.add("fa-microphone-alt")
         }
 
         title.textContent = mediaTitle
@@ -188,13 +192,13 @@ function registerPodcast(scrollContainerId, data) {
         }
 
         var elements = document.querySelector("#page-7").querySelectorAll(".page-7-podcast-episodes-entry")
-        document.test4 = elements
         for (let i = 0; i < elements.length; i++) {
             elements[i].addEventListener("click", function() {
                 playEpisode(data, i)
             })    
         }
- 
+        
+        document.querySelector("#page-7").querySelectorAll("#page-7-podcast-cover")[0].src = data["logo"]
         setPage(7)
     })
  }
@@ -297,13 +301,13 @@ function playEpisode(podcastData, number) {
     console.log(podcastData)    
 
     playStream(podcastData["episodes"][number]["stream"])
-    setCurrentlyPlaying(true, podcastData["episodes"][number]["name"], 0)
+    setCurrentlyPlaying(true, podcastData["episodes"][number]["title"], 4)
 
     document.querySelector("#page-8").querySelectorAll(".podcast-player-cover")[0].src = podcastData["logo"]
-    document.querySelector("#page-8").querySelectorAll(".podcast-player-title")[0].textContent = podcastData["episodes"][number]["title"]
+    document.querySelector("#page-8").querySelectorAll(".podcast-player-title")[0].textContent = podcastData["name"]
+    document.querySelector("#page-8").querySelectorAll(".podcast-player-subtitle")[0].textContent = podcastData["episodes"][number]["title"]
 
     setPage(8)
-
 }
 
 function playWebStation(data) {
@@ -525,9 +529,11 @@ document.querySelector('#page-7-back').addEventListener("click", function() {
 
 //Page 8
 document.querySelector('#page-8-home').addEventListener("click", function() {
+    stopPlayback()
     setPage(2)
 })
 document.querySelector('#page-8-back').addEventListener("click", function() {
+    stopPlayback()
     setPage(radio["lastPage"])
 })
 

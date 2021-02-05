@@ -683,8 +683,10 @@ p {
     padding: 10px;
     margin-left: 20px;
     margin-top: 20px;
+    height: 350px;
     width: 400px;
     display: inline-block;
+    overflow: auto;
 }
 
 .page-7-podcast-episodes-entry {
@@ -744,6 +746,12 @@ p {
     margin-top: 10px;
     font-weight: lighter;
     font-size: 30px;
+}
+
+.podcast-player-subtitle {
+    margin-top: 10px;
+    font-weight: lighter;
+    font-size: 15px;
 }
 
 #podcastPlayerControls {
