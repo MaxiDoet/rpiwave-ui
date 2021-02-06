@@ -393,7 +393,7 @@ function loadWebStations() {
     request.send()
 }
 
-function loadRandomPodcasts() {
+function loadRandomPodcasts(count) {
     var request = new XMLHttpRequest()
     request.addEventListener("load", function() {
         var podcastData = JSON.parse(request.responseText)
@@ -412,7 +412,7 @@ function loadRandomPodcasts() {
         registerStation('page-2-webstations', errorData, 0)
     })
     */
-    request.open("GET", "/api/get_random_podcasts?count=5")
+    request.open("GET", `/api/get_random_podcasts?count=${count}`)
     request.send()
 }
 
@@ -512,10 +512,12 @@ loadSettings()
 //Page 4
 document.querySelector('#page-4-home').addEventListener("click", function() {
     stopPlayback()
+    setCurrentlyPlaying(false, "", 0, 0)
     setPage(2)
 })
 document.querySelector('#page-4-back').addEventListener("click", function() {
     stopPlayback()
+    setCurrentlyPlaying(false, "", 0, 0)
     setPage(radio["lastPage"])
 })
 
@@ -530,10 +532,12 @@ document.querySelector('#page-7-back').addEventListener("click", function() {
 //Page 8
 document.querySelector('#page-8-home').addEventListener("click", function() {
     stopPlayback()
+    setCurrentlyPlaying(false, "", 0, 0)
     setPage(2)
 })
 document.querySelector('#page-8-back').addEventListener("click", function() {
     stopPlayback()
+    setCurrentlyPlaying(false, "", 0, 0)
     setPage(radio["lastPage"])
 })
 
@@ -611,7 +615,7 @@ setTimeout(function() {
     //sound.play();
 
     loadWebStations()
-    loadRandomPodcasts()
+    loadRandomPodcasts(10)
 }, 100)
 
 setTimeout(function() {

@@ -562,7 +562,9 @@ p {
 .mediawidget-title {
     margin-left: 20px;
     margin-top: 15px;
-    height: fit-content;
+    height: 40px;
+    width: 180px;
+    overflow: hidden;
 }
 
 .mediawidget-time {
@@ -743,7 +745,7 @@ p {
 }
 
 .podcast-player-title {
-    margin-top: 10px;
+    margin-top: 20px;
     font-weight: lighter;
     font-size: 30px;
 }
