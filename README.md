@@ -1,5 +1,8 @@
 # rpiwave-ui
 
-This chrome extension is needed for iframes to work: https://chrome.google.com/webstore/detail/ignore-x-frame-headers/gleekbfjekiniecknbkamfmkohkpodhe
+A feature-rich radio server for a Raspberry Pi.
 
-Widevine capable browser is needed!
+Planned Features:
+ * WebRadio player [******   ]
+ * Podcast player  [***      ]
+ * Modern UI       [****     ]
