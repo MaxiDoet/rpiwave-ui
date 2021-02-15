@@ -713,29 +713,13 @@ p {
     margin-left: auto;
     margin-right: auto;
     margin-top: 2%;
-    width: 348px;
+    width: 450px;
     text-align: center;
 }
 
 .podcast-player-cover {
     width: 200px;
     height: 200px;
-}
-
-.podcast-player-controls {
-    position: relative;
-    width: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-}
-
-.podcast-player-badge-row {
-    position: relative;
-    width: max-content;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
 }
 
 .podcast-player-station {
@@ -754,8 +738,4 @@ p {
     margin-top: 10px;
     font-weight: lighter;
     font-size: 15px;
-}
-
-#podcastPlayerControls {
-    display: none;
 }

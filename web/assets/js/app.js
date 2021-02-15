@@ -300,7 +300,12 @@ function playEpisode(podcastData, number) {
     console.log(`Playing number ${number}`)
     console.log(podcastData)    
 
+    /*
     playStream(podcastData["episodes"][number]["stream"])
+    */
+    testPlayer.setSource(podcastData["episodes"][number]["stream"]);
+    testPlayer.play();
+
     setCurrentlyPlaying(true, podcastData["episodes"][number]["title"], 4)
 
     document.querySelector("#page-8").querySelectorAll(".podcast-player-cover")[0].src = podcastData["logo"]
@@ -652,3 +657,5 @@ setInterval(function() {
 }, 10)
 
 //Example: setCurrentlyPlaying: setCurrentlyPlaying(true, "Fear", 2, 0)
+
+let testPlayer = new AudioPlayer("podcastPlayer");

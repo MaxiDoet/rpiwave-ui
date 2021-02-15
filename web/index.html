@@ -15,6 +15,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>
 
+        <link rel="stylesheet" href="/assets/css/player.css" />
+        <script src="/assets/js/player.js"></script>
+
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
@@ -262,10 +265,25 @@
                         <img src="" class="podcast-player-cover"></img>
                         <p class="podcast-player-title"></p>
                         <p class="podcast-player-subtitle"></p>
-                        <div class="podcast-player-controls" id="podcastPlayerControls">
-                            <i class="fas fa-2x fa-play-circle"></i>
-                        </div>
-                        <div class="radio-player-badge-row">
+                        <div
+                            class="audio-player"
+                            id="podcastPlayer"
+                        >
+                            <div class="audio-player-seekbar">
+                                <p class="audio-player-seekbar__time"></p>
+                                <input
+                                    type="range"
+                                    min="1"
+                                    max="100"
+                                    value="0"
+                                    class="audio-player-seekbar__range"
+                                />
+                                <p class="audio-player-seekbar__end"></p>
+                            </div>
+                            <div class="audio-player-play play">
+                                <span class="audio-player-play__bar audio-player-play__bar-1"></span>
+                                <span class="audio-player-play__bar audio-player-play__bar-2"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
