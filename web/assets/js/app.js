@@ -9,7 +9,9 @@ var radio = {
     currentlyPlayingTitle: "",
     currentlyPlayingSubTitle: "", // In most cases this is the artist or the radio station
     currentPage: 1,
-    lastPage: 1 
+    lastPage: 2,
+    sleepTimerId: 0,
+    dimTimeoutId: 0
 }
 
 var applications = []
@@ -44,6 +46,17 @@ function setPage(pageNum) {
         c[pageNum].classList.add("active");
     }
     }, 100)
+
+    if (pageNum == 2) {
+        // Remove old timeout
+        clearTimeout(radio["dimTimeoutId"])
+        // Register dim timeout
+        radio["dimTimeoutId"] = setTimeout(function() {
+            var request = new XMLHttpRequest()
+            request.open("GET", `/api/dim_down`)
+            request.send()  
+        }, 10000)
+    }
 
 }
 
@@ -303,8 +316,8 @@ function playEpisode(podcastData, number) {
     /*
     playStream(podcastData["episodes"][number]["stream"])
     */
-    testPlayer.setSource(podcastData["episodes"][number]["stream"]);
-    testPlayer.play();
+    podcastPlayer.setSource(podcastData["episodes"][number]["stream"]);
+    podcastPlayer.play();
 
     setCurrentlyPlaying(true, podcastData["episodes"][number]["title"], 4)
 
@@ -490,6 +503,10 @@ setPage(0);
 // Page 0 No eventhandlers
 // Page 1
 document.querySelector('#page-1').addEventListener("click", function() {
+    // Dim up
+    var request = new XMLHttpRequest()
+    request.open("GET", `/api/dim_normal`)
+    request.send()  
    setPage(2)
 })
 // Page 2
@@ -502,6 +519,10 @@ document.querySelector('#page-2-back').addEventListener("click", function() {
 
 document.querySelector('#page-2-settings').addEventListener("click", function() {
     setPage(3)
+})
+
+document.querySelector('#page-2-sleep').addEventListener("click", function() {
+    setPage(9)
 })
 
 //Page 3
@@ -536,14 +557,37 @@ document.querySelector('#page-7-back').addEventListener("click", function() {
 
 //Page 8
 document.querySelector('#page-8-home').addEventListener("click", function() {
-    stopPlayback()
+    podcastPlayer.pause()
+    //stopPlayback()
     setCurrentlyPlaying(false, "", 0, 0)
     setPage(2)
 })
 document.querySelector('#page-8-back').addEventListener("click", function() {
-    stopPlayback()
+    podcastPlayer.pause()
+    //stopPlayback()
     setCurrentlyPlaying(false, "", 0, 0)
     setPage(radio["lastPage"])
+})
+
+//Page 9
+document.querySelector('#page-9-home').addEventListener("click", function() {
+    setPage(2)
+})
+document.querySelector('#page-9-back').addEventListener("click", function() {
+    setPage(radio["lastPage"])
+})
+
+document.querySelector("#page-9-set").addEventListener("click", function() {
+    // Remove old timer
+    clearTimeout(radio["sleepTimerId"])
+    // Add new timer
+    var sleepTimeMinutes = document.querySelector("#sleepTimeSwiper").dataset.value
+    setTimeout(function() {
+        // Perform shutdown
+        var request = new XMLHttpRequest()
+        request.open("GET", `/api/shutdown`)
+        request.send()  
+    }, sleepTimeMinutes * 60000)
 })
 
 /* Register all back buttons in webframes*/
@@ -658,4 +702,5 @@ setInterval(function() {
 
 //Example: setCurrentlyPlaying: setCurrentlyPlaying(true, "Fear", 2, 0)
 
-let testPlayer = new AudioPlayer("podcastPlayer");
+let podcastPlayer = new AudioPlayer("podcastPlayer");
+var sleepTimerSwiper = new NumberSwiper('sleepTimeSwiper');

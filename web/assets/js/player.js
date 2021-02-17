@@ -54,6 +54,8 @@ class AudioPlayer {
     }
     
     play() {
+        this.audio.pause();
+
         if (this.playButton.classList.contains("play")) {
             this.playButton.classList.remove("play");
             this.playButton.classList.add("pause");
@@ -65,6 +67,11 @@ class AudioPlayer {
         }
     }
 
+    pause() {
+      this.audio.pause();
+      this.playButton.classList.remove("pause");
+      this.playButton.classList.add("play");
+    }
     _playerOnloadedmetadata(event) {
       this.seekBarRange.setAttribute("max", this.audio.duration);
   

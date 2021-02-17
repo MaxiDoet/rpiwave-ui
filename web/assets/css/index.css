@@ -673,6 +673,16 @@ p {
     font-size: xx-large;
 }
 
+#page-2-sleep {
+    position: absolute;
+    top: 7%;
+    right: 21%;
+    transform: translate(-50%, -50%);
+    color: var(--theme-dark-first-text-color);
+    font-weight: lighter;
+    font-size: xx-large;
+}
+
 #page-7-podcast-cover {
     margin: 20px;
     width: 300px;
@@ -738,4 +748,11 @@ p {
     margin-top: 10px;
     font-weight: lighter;
     font-size: 15px;
+}
+
+#page-9-set {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-48%);
 }

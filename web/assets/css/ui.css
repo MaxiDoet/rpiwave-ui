@@ -202,3 +202,17 @@
 .ui-select__option {
     background-color: gray;
 }
+
+.ui-button-1 {
+    width: 150px;
+    height: 40px;
+    border: 0.1px solid white;
+    background: transparent;
+    border-radius: 3px;
+    color: white;
+    font-weight: 500;
+}
+
+.ui-button-1:active {
+    outline: none;
+}

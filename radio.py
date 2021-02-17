@@ -56,3 +56,12 @@ def get_config():
         return configFile.read()
     except:
         return 0
+
+def shutdown():
+    os.system("shutdown -h now")
+
+def dim_down():
+    os.system("systemctl start brightness-down")
+
+def dim_normal():
+    os.system("systemctl start brightness-normal")

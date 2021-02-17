@@ -18,6 +18,9 @@
         <link rel="stylesheet" href="/assets/css/player.css" />
         <script src="/assets/js/player.js"></script>
 
+        <link rel="stylesheet" href="/assets/css/number-swiper.css" />
+        <script src="/assets/js/number-swiper.js"></script>
+
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
@@ -128,6 +131,7 @@
                     <p class="navbar-title"></p>
                     <div class="navbar-right">
                         <i class="navbar-icon fal fa-4x fa-sliders-h" id="page-2-settings"></i>
+                        <i class="navbar-icon fal fa-4x fa-alarm-snooze" id="page-2-sleep"></i>
                         <p class="navbar-clock time"></p>
                     </div>
 
@@ -286,6 +290,71 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="page" id="page-9">
+                <div class="navbar">
+                    <div class="navbar-left">
+                        <i class="navbar-icon fal fa-4x fa-home" id="page-9-home"></i>
+                        <i class="navbar-icon fal fa-4x fa-chevron-left" id="page-9-back"></i>
+                    </div>
+                    <p class="navbar-title">Sleep</p>
+                    <div class="navbar-right">
+                        <p class="navbar-clock time"></p>
+                    </div>
+
+                </div>
+                <div class="main" style="height: initial">
+                    <div id="sleepTimeSwiper" class="number-swiper" data-value="">
+                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                          <li class="last-zero">0</li>
+                          <li>1</li>
+                          <li>2</li>
+                          <li>3</li>
+                          <li>4</li>
+                          <li>5</li>
+                          <li>6</li>
+                          <li>7</li>
+                          <li>8</li>
+                          <li>9</li>
+                          <li id="center-2" class="number-swiper-active-number">0</li>
+                          <li>1</li>
+                          <li>2</li>
+                          <li>3</li>
+                          <li>4</li>
+                          <li>5</li>
+                          <li>6</li>
+                          <li>7</li>
+                          <li>8</li>
+                          <li>9</li>
+                          <li class="last-zero">0</li>
+                        </ol>
+                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                          <li class="last-zero">0</li>
+                          <li>1</li>
+                          <li>2</li>
+                          <li>3</li>
+                          <li>4</li>
+                          <li>5</li>
+                          <li>6</li>
+                          <li>7</li>
+                          <li>8</li>
+                          <li>9</li>
+                          <li id="center-1" class="number-swiper-active-number">0</li>
+                          <li>1</li>
+                          <li>2</li>
+                          <li>3</li>
+                          <li>4</li>
+                          <li>5</li>
+                          <li>6</li>
+                          <li>7</li>
+                          <li>8</li>
+                          <li>9</li>
+                          <li class="last-zero">0</li>
+                        </ol>
+                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                      </div>
+                      <button class="ui-button-1" id="page-9-set">Set</button>
                 </div>
             </div>
         </div>

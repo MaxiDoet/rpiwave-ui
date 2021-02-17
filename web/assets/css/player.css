@@ -53,9 +53,7 @@
     margin-right: auto;
     margin-top: 20px;
   }
-  .audio-player-play:hover {
-    border: #adadad 3px solid;
-  }
+   
   .audio-player-play:hover .audio-player-play__bar {
     background-color: #adadad;
   }
