@@ -47,7 +47,7 @@ function setPage(pageNum) {
     }
     }, 100)
 
-    if (pageNum == 2) {
+    if (pageNum == 1) {
         // Remove old timeout
         clearTimeout(radio["dimTimeoutId"])
         // Register dim timeout
@@ -577,17 +577,20 @@ document.querySelector('#page-9-back').addEventListener("click", function() {
     setPage(radio["lastPage"])
 })
 
-document.querySelector("#page-9-set").addEventListener("click", function() {
+document.querySelector("#toggle_sleeptimer_active").addEventListener("change", function(event) {
     // Remove old timer
     clearTimeout(radio["sleepTimerId"])
     // Add new timer
-    var sleepTimeMinutes = document.querySelector("#sleepTimeSwiper").dataset.value
-    setTimeout(function() {
-        // Perform shutdown
-        var request = new XMLHttpRequest()
-        request.open("GET", `/api/shutdown`)
-        request.send()  
-    }, sleepTimeMinutes * 60000)
+
+    if (event.currentTarget.checked) {
+        var sleepTimeMinutes = document.querySelector("#sleepTimeSwiper").dataset.value
+        setTimeout(function() {
+            // Perform shutdown
+            var request = new XMLHttpRequest()
+            request.open("GET", `/api/shutdown`)
+            request.send()  
+        }, sleepTimeMinutes * 60000)
+    }
 })
 
 /* Register all back buttons in webframes*/
