@@ -73,18 +73,18 @@ def get_podcast_data_by_id():
 def shutdown():
     radio.shutdown()
     
-    return True
+    return ""
 
 @app.route('/api/dim_down')
 def dim_down():
     radio.dim_down()
     
-    return True
+    return ""
 
 @app.route('/api/dim_normal')
 def dim_normal():
     radio.dim_normal()
     
-    return True
+    return ""
 
 app.run(host= '0.0.0.0', port=80)

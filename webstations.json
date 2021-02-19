@@ -17,6 +17,15 @@
       "streamLow": "http://br-br2-sued.cast.addradio.de/br/br2/sued/mp3/low",
       "streamMid": "http://br-br2-sued.cast.addradio.de/br/br2/sued/mp3/mid",
       "streamHigh": ""
+    },
+    {
+      "name": "Bayern 1",
+      "id": "bayern1",
+      "banner": "https://www.br.de/radio/bayern1/bayern-1-logo-2018-100~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.jpg?version=8e522",
+      "icon": "https://d3kle7qwymxpcy.cloudfront.net/images/broadcasts/10/90/2245/2/c175.png",
+      "streamLow": "http://br-br1-obb.cast.addradio.de/br/br1/obb/mp3/low",
+      "streamMid": "http://br-br1-obb.cast.addradio.de/br/br1/obb/mp3/mid",
+      "streamHigh": ""
     }
   ]
 }

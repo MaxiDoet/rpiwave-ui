@@ -657,6 +657,7 @@ p {
     margin-top: 5%;
     margin-left: 30%;
     width: 50%;
+    height: 100%;
 }
 
 .settings-header {
@@ -755,4 +756,12 @@ p {
     bottom: 20%;
     left: 50%;
     transform: translateX(-48%);
+}
+
+#page-1-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 800px;
+    height: 480px;
 }

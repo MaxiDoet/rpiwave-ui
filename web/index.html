@@ -104,6 +104,7 @@
             </div>
             <div class="page" id="page-1">
                 <div class="main">
+                    <img src="https://source.unsplash.com/collection/27710177/800x480" id="page-1-background"></img>
                     <h2 id="page-1-clock" class="time"></h2>
                     <h2 id="page-1-date" class="date"></h2>
                     <div class="mediawidget mediawidget-clock" id="page-1-mediawidget">
@@ -171,6 +172,12 @@
                             <label for="toggle_homescreen_news" class="ui-switch__input"></label>
                             <label for="toggle_homescreen_news" class="ui-switch__label">Display latest news</label>
                         </div>
+                        <h4 class="settings-header -mgt--20 -mgl--20">Background Change Interval</h4>
+                        <select data-property="backgroundChangeInterval" class="ui-select__select -mgt--10 -mgl--20">
+                            <option value="300000" class="ui-select__option">5 Minutes</option>
+                            <option value="1800000" class="ui-select__option">30 Minutes</option>
+                            <option value="3600000" class="ui-select__option">1 Hour</option>
+                        </select>
                         <h3 class="settings-header -mgt--20">Streaming</h3>
                         <h4 class="settings-header -mgt--20 -mgl--20">Quality</h4>
                         <div class="ui-select -mgl--20 -mgt--10">

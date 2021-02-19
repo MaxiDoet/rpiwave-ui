@@ -11,7 +11,8 @@ var radio = {
     currentPage: 1,
     lastPage: 2,
     sleepTimerId: 0,
-    dimTimeoutId: 0
+    dimTimeoutId: 0,
+    backgroundChangeIntervalId: 0
 }
 
 var applications = []
@@ -509,6 +510,14 @@ document.querySelector('#page-1').addEventListener("click", function() {
     request.send()  
    setPage(2)
 })
+
+// Remove old interval
+clearInterval(radio["backgroundChangeIntervalId"])
+
+radio["backgroundChangeIntervalId"] = setInterval(function() {
+    document.querySelector("#page-1-background").src = "https://source.unsplash.com/collection/27710177/800x480"
+}, radio["settings"]["backgroundChangeInterval"] || 300000)
+
 // Page 2
 document.querySelector('#page-2-home').addEventListener("click", function() {
     setPage(1)
