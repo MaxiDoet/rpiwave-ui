@@ -26,6 +26,24 @@
       "streamLow": "http://br-br1-obb.cast.addradio.de/br/br1/obb/mp3/low",
       "streamMid": "http://br-br1-obb.cast.addradio.de/br/br1/obb/mp3/mid",
       "streamHigh": ""
+    },
+    {
+      "name": "KIIS FM",
+      "id": "kiisfm",
+      "banner": "https://i.iheart.com/v3/re/new_assets/5c9e63ecfa47e3153c723ee8?ops=fit(480%2C480)",
+      "icon": "https://i.iheart.com/v3/re/new_assets/5c9e63ecfa47e3153c723ee8?ops=fit(480%2C480)",
+      "streamLow": "",
+      "streamMid": "https://ample.revma.ihrhls.com/zc185/9_mil7ne5jnl2302/playlist.m3u8",
+      "streamHigh": ""
+    },
+    {
+      "name": "KCRW",
+      "id": "kcrw",
+      "banner": "https://www.kcrw.com/images/default-share-image/@@images/image/page-header?v=1573167935.93",
+      "icon": "https://www.kcrw.com/images/default-share-image/@@images/image/page-header?v=1573167935.93",
+      "streamLow": "",
+      "streamMid": "https://ample.revma.ihrhls.com/zc185/9_mil7ne5jnl2302/playlist.m3u8",
+      "streamHigh": ""
     }
   ]
 }

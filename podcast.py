@@ -6,8 +6,15 @@ def get_random_podcasts(count):
     podcasts = json.loads(podcast_file.read())["podcasts"]
     random_selection = []
 
-    for i in range(0, count):
-        random_number = random.randrange(0, len(podcasts))
+    for i in range(count):
+        random_number = random.randint(0, len(podcasts) - 1)
+
+        for i2 in random_selection:
+            print("random_random: %s" % random_number)
+            if i2 == podcasts[random_number]:
+                i-=1
+                break
+        
         random_selection.append(podcasts[random_number])
 
     podcast_file.close()

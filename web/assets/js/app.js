@@ -676,7 +676,7 @@ setTimeout(function() {
     //sound.play();
 
     loadWebStations()
-    loadRandomPodcasts(10)
+    loadRandomPodcasts(5)
 }, 100)
 
 setTimeout(function() {
