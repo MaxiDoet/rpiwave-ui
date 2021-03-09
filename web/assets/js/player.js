@@ -1,5 +1,5 @@
 class AudioPlayer {
-    constructor(playerContainerId) {
+    constructor(playerContainerId, postplay, postpause) {
       this.playerContainer = document.getElementById(playerContainerId);
       //this.audio = new Audio(src);
   
@@ -30,6 +30,10 @@ class AudioPlayer {
         "click",
         this._playerOnPlayButtonClick.bind(this)
       );
+
+      // This are the functions that get executed after someone presses the play/pause button
+      this.postplay = postplay;
+      this.postpause = postpause;
     }
   
     setSource(src) {
@@ -54,7 +58,7 @@ class AudioPlayer {
     }
     
     play() {
-        this.audio.pause();
+        this.pause();
 
         if (this.playButton.classList.contains("play")) {
             this.playButton.classList.remove("play");
@@ -62,6 +66,13 @@ class AudioPlayer {
       
             // Play audio
             this.audio.play();
+
+            // Execute postplay function
+            try {
+              this.postplay();
+            } catch {
+
+            }
           } else {
 
         }
@@ -71,6 +82,13 @@ class AudioPlayer {
       this.audio.pause();
       this.playButton.classList.remove("pause");
       this.playButton.classList.add("play");
+
+      // Execute postpause function
+      try {
+        this.postpause();
+      } catch {
+
+      }
     }
     _playerOnloadedmetadata(event) {
       this.seekBarRange.setAttribute("max", this.audio.duration);
@@ -103,7 +121,7 @@ class AudioPlayer {
         this.playButton.classList.add("play");
   
         // Pause audio
-        this.audio.pause();
+        this.pause();
       }
     }
   

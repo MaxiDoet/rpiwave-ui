@@ -5,6 +5,8 @@ var radio = {
     currentlyPlayingStationId: "",
     currentlyPlayingStationName: "",
     currentlyPlayingStationType: "",
+    currentlyPlayingPodcastName: "",
+    currentlyPlayingPodcastEpisode: "",
     currentlyPlayingSource: "",
     currentlyPlayingTitle: "",
     currentlyPlayingSubTitle: "", // In most cases this is the artist or the radio station
@@ -323,10 +325,11 @@ function playEpisode(podcastData, number) {
     /*
     playStream(podcastData["episodes"][number]["stream"])
     */
+    radio["currentlyPlayingPodcastEpisode"] = podcastData["episodes"][number]["title"]
     podcastPlayer.setSource(podcastData["episodes"][number]["stream"]);
     podcastPlayer.play();
 
-    setCurrentlyPlaying(true, podcastData["episodes"][number]["title"], 4)
+    //setCurrentlyPlaying(true, podcastData["episodes"][number]["title"], 4, 0, 8)
 
     document.querySelector("#page-8").querySelectorAll(".podcast-player-cover")[0].src = podcastData["logo"]
     document.querySelector("#page-8").querySelectorAll(".podcast-player-title")[0].textContent = podcastData["name"]
@@ -377,6 +380,7 @@ function stopPlayback() {
 }
 
 function playStream(url) {
+    console.log("Playing stream:", url);
     if (radio["currentlyPlayingSource"] == 0) {
         stopPlayback()
     }
@@ -403,7 +407,7 @@ function loadWebStations() {
 
         for (let i = 0; i < webStations.length; i++) {
             registerStation("page-2-webstations", webStations[i], 0)
-            console.log("Registered station")
+            console.log(`Registered station: Name: ${webStations[i]["name"]}, URL: ${webStations[i]["streamMid"]}`)
         }
     })
 
@@ -720,5 +724,10 @@ setInterval(function() {
 
 //Example: setCurrentlyPlaying: setCurrentlyPlaying(true, "Fear", 2, 0)
 
-let podcastPlayer = new AudioPlayer("podcastPlayer");
+let podcastPlayer = new AudioPlayer("podcastPlayer", function() {
+    setCurrentlyPlaying(true, radio["currentlyPlayingPodcastEpisode"], 4, 0, 8)
+}, function() {
+    setCurrentlyPlaying(false, "")
+});
+
 var sleepTimerSwiper = new NumberSwiper('sleepTimeSwiper');

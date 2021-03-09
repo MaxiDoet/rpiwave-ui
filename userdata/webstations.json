@@ -44,6 +44,15 @@
       "streamLow": "",
       "streamMid": "https://ample.revma.ihrhls.com/zc185/9_mil7ne5jnl2302/playlist.m3u8",
       "streamHigh": ""
+    },
+    {
+      "name": "KISS FM Deutschrap Capital Bra",
+      "id": "kissfmdrbn",
+      "banner": "https://www.kissfm.de/_nuxt/icons/icon_512.be8y2280000.png",
+      "icon": "https://www.kissfm.de/_nuxt/icons/icon_512.be8y2280000.png",
+      "streamLow": "",
+      "streamMid": "https://topradio-stream29.radiohost.de/kissfm-event_mp3-192?ref=internetradio&amsparams=internetradio",
+      "streamHigh": ""
     }
   ]
 }

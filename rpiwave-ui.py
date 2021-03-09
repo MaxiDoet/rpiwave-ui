@@ -87,4 +87,8 @@ def dim_normal():
     
     return ""
 
+@app.route('/api/get_weather_data')
+def get_weather_data():
+    return radio.get_weather_data()
+
 app.run(host= '0.0.0.0', port=80)

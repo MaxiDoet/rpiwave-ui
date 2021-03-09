@@ -544,6 +544,7 @@ p {
     height: 60px;
     background-color: #58585857;
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     border-radius: 2px;
     transform: translate(-70%, 0%);
     transition: 0.4s;

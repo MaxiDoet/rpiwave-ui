@@ -54,9 +54,6 @@
     margin-top: 20px;
   }
    
-  .audio-player-play:hover .audio-player-play__bar {
-    background-color: #adadad;
-  }
   .audio-player-play .audio-player-play__bar {
     display: inline-block;
     position: absolute;

@@ -2,6 +2,7 @@ import vlc
 import json
 from time import sleep
 import os
+from climacell_api.client import ClimacellApiClient
 
 webStations=[]
 players=[]
@@ -57,11 +58,10 @@ def get_config():
     except:
         return 0
 
-def shutdown():
-    os.system("shutdown -h now")
+def get_weather_data():
+    key = get_config_value("weatherApiKey")
+    location = get_config_value("weatherLocation")
 
-def dim_down():
-    os.system("systemctl start brightness-down")
+    client = ClimacellApiClient(key)
 
-def dim_normal():
-    os.system("systemctl start brightness-normal")
+    return client.realtime(lat=location[0], lon=location[1], fields=['temp']).json()
