@@ -447,17 +447,10 @@ function loadRandomPodcasts(count) {
 
 function displayWeather() {
 	var weatherWidget = document.querySelector("#page-1-weatherwidget");
-	var weatherWidgetIcon = weatherWidget.querySelectorAll(".weatherwidget-icon")[0];
 	var request =  new XMLHttpRequest();
 
 	request.onload = function() {
-		var weatherData;
-
-		try{
-			weatherData = JSON.parse(request.responseText);
-		} catch {
-			console.log("Received invalid weatherdata!");
-		}
+		var weatherData = JSON.parse(request.responseText);
 
 		// We need to implement all weathercodes here because otherwise sometimes it'd just display nothing!
 		var weatherIcons = {
@@ -485,24 +478,14 @@ function displayWeather() {
 			mostly_clear: "fa-cloud-sun",
 			clear: "fa-sun"
 }
-		// First we'll have to remove the old icon
-		for (var i =0; i < weatherWidgetIcon.classList.length;i++) {
- 			if(weatherWidgetIcon.classList[i].startsWith("fa-")) {
-				weatherWidgetIcon.classList.remove(weatherWidgetIcon.classList[i]);
-    			}
-		}
-
 		// Now we'll decide which icon to use
-		for (var weatherCode in weatherIcons) {
-			if (weatherCode == weatherData.weather_code.value) {
-				weatherWidgetIcon.classList.add("fa-3x");
-				weatherWidgetIcon.classList.add(weatherIcons[weatherCode]);
-			}
+		// First we'll have to remove the old icon
+		weatherWidget.classList.remove("fal");
+
+		for (var icon of weatherIcons) {
+			if (weatherData.wea)
 		}
 	}
-
-	request.open("GET", "/api/get_weather_data");
-	request.send();
 }
 
 function updateSettingsValue(property, value) {
@@ -752,12 +735,6 @@ setTimeout(function() {
 setTimeout(function() {
     setPage(1)
 }, 10000)
-
-/* Update weatherwidget */
-displayWeather();
-setInterval(function() {
-	displayWeather();
-}, 300000); // Update weatherwidget every 5min
 
 /* Update every time text */
 setInterval(function() {

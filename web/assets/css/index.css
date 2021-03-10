@@ -537,9 +537,9 @@ p {
 }
 
 .mediawidget-clock{
-    position: absolute;
+position: relative;
     left: 50%;
-    bottom: 20%;
+    bottom: -36px;
     width: 250px;
     height: 60px;
     background-color: #58585857;
@@ -767,4 +767,18 @@ p {
     left: 0;
     width: 800px;
     height: 480px;
+}
+
+.weatherwidget {
+    margin-top: 10px;
+    position: relative;
+    margin-left: auto;
+    border-radius: 16px;
+    margin-right: auto;
+}
+	
+.weatherwidget-text{
+	display: inline-block;
+    	font-weight: 400;
+    	font-size: 28px;
 }
