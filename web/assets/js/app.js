@@ -448,6 +448,7 @@ function loadRandomPodcasts(count) {
 function displayWeather() {
 	var weatherWidget = document.querySelector("#page-1-weatherwidget");
 	var weatherWidgetIcon = weatherWidget.querySelectorAll(".weatherwidget-icon")[0];
+	var weatherText = weatherWidget.querySelectorAll(".weatherwidget-text")[0];
 	var request =  new XMLHttpRequest();
 
 	request.onload = function() {
@@ -499,6 +500,10 @@ function displayWeather() {
 				weatherWidgetIcon.classList.add(weatherIcons[weatherCode]);
 			}
 		}
+
+
+		// Set temperature text
+		weatherText.textContent = weatherData.temp.value.toFixed() + "°C"; // Of course later we can change the unit
 	}
 
 	request.open("GET", "/api/get_weather_data");
