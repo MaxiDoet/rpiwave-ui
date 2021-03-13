@@ -1,6 +1,10 @@
+import vlc
+from time import sleep
 import json
+import os
 
 webstations_file = "userdata/webstations.json"
+players=[]
 
 def play_stream(url):
     # Wait 1 second or the PulseAudio server will crash!
@@ -13,7 +17,7 @@ def play_stream(url):
 
 def stop_playback():
     for player in players:
-        player.stop()
+    	player.stop()
 
 def get_webstation_list():
 	try:

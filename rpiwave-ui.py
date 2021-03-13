@@ -35,13 +35,13 @@ def play_stream():
     url = request.args.get('url')
     if not url: return status(False)
 
-    webstation.playStream(url)
+    webstation.play_stream(url)
     return status(True)
 
 
 @app.route('/api/stop_playback')
 def stop_playback():
-    webstation.stopPlayback()
+    webstation.stop_playback()
     return status(True)
 
 @app.route('/api/update_config_value')
