@@ -1,0 +1,18 @@
+{
+	"podcasts": [
+		"https://changelog.com/podcast/feed",
+		"https://shitcouldbeworse.libsyn.com/rss",
+		"https://talkingmopars.libsyn.com/rss",
+		"http://feeds.devhell.info/devhell-podcast",
+		"https://freecodecamp.libsyn.com/rss",
+		"https://www.ard.de/static/radio/radiofeature/rss/podcast.xml",
+		"https://www.ndr.de/podcast/podcast4336.xml",
+		"https://feeds.br.de/hoerspiel-pool/feed.xml",
+		"http://web.ard.de/radiotatort/rss/podcast.xml",
+		"https://nodumbqs.libsyn.com/rss",
+		"https://www1.wdr.de/mediathek/audio/1live/1live-babo-bus/babobus104.podcast",
+		"https://feeds.soundcloud.com/users/soundcloud:users:645460692/sounds.rss",
+		"https://ct-uplink.podigee.io/feed/mp3",
+		"http://feeds.feedburner.com/radioactivedads"
+	]
+}

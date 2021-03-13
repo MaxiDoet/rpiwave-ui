@@ -493,13 +493,43 @@ function displayWeather() {
     			}
 		}
 
-		// Now we'll decide which icon to use
-		for (var weatherCode in weatherIcons) {
-			if (weatherCode == weatherData.weather_code.value) {
-				weatherWidgetIcon.classList.add("fa-3x");
-				weatherWidgetIcon.classList.add(weatherIcons[weatherCode]);
+		// If current time is over 20:00pm for some weather codes we can use night icons
+		var now = new Date();
+
+		if (now.getHours() > 20) {
+			weatherWidgetIcon.classList.add("fa-3x");
+			switch(weatherData.weather_code.value) {
+				case "rain":
+					weatherWidgetIcon.classList.add("fa-cloud-moon-rain");
+					return;
+				case "cloudy":
+					weatherWidgetIcon.classList.add("fa-cloud-moon");
+					return;
+				case "mostly_cloudy":
+                                        weatherWidgetIcon.classList.add("fa-clouds-moon");
+					return;
+				case "partly_cloudy":
+					weatherWidgetIcon.classList.add("fa-cloud-moon");
+					return;
+				case "mostly_clear":
+					weatherWidgetIcon.classList.add("fa-moon-cloud");
+					return;
+				case "clear":
+					weatherWidgetIcon.classList.add("fa-moon");
+					return;
+				default:
+					break;
 			}
 		}
+
+		// Now we'll decide which icon to use
+                for (var weatherCode in weatherIcons) {
+			if (weatherCode == weatherData.weather_code.value) {
+                        	weatherWidgetIcon.classList.add("fa-3x");
+                                weatherWidgetIcon.classList.add(weatherIcons[weatherCode]);
+                        }
+               	}
+
 
 
 		// Set temperature text
