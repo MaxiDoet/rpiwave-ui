@@ -3,19 +3,19 @@ import random
 
 podcasts_file="userdata/podcasts.json"
 
-def get_random_podcasts(count):
+def get_podcasts():
     podcast_file = open(podcasts_file, "r")
     podcasts = json.loads(podcast_file.read())["podcasts"]
-    random_selection = []
+    selection = []
 
 
-    random_numbers=random.sample(range(len(podcasts) - 1), count)
+    random_numbers=random.sample(range(len(podcasts)), len(podcasts))
 
     for i in random_numbers:
-        random_selection.append(podcasts[i])
+        selection.append(podcasts[i])
 
     podcast_file.close()
-    return json.dumps(random_selection)
+    return json.dumps(selection)
 
 def get_data_by_id(id):
     podcast_file = open(podcasts_file, "r")

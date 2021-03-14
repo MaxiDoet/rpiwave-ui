@@ -422,7 +422,7 @@ function loadWebStations() {
     request.send()
 }
 
-function loadRandomPodcasts(count) {
+function loadPodcasts(count) {
     var request = new XMLHttpRequest()
     request.addEventListener("load", function() {
         var podcastData = JSON.parse(request.responseText)
@@ -441,7 +441,7 @@ function loadRandomPodcasts(count) {
         registerStation('page-2-webstations', errorData, 0)
     })
     */
-    request.open("GET", `/api/get_random_podcasts?count=${count}`)
+    request.open("GET", "/api/get_podcasts")
     request.send()
 }
 
@@ -517,6 +517,9 @@ function displayWeather() {
 				case "clear":
 					weatherWidgetIcon.classList.add("fa-moon");
 					return;
+				case "tstorm":
+					weatherWidgetIcon.classList.add("fa-thunderstorm-moon");
+                                        return;
 				default:
 					break;
 			}
@@ -781,7 +784,7 @@ setTimeout(function() {
     //sound.play();
 
     loadWebStations()
-    loadRandomPodcasts(5)
+    loadPodcasts(5)
 }, 100)
 
 setTimeout(function() {

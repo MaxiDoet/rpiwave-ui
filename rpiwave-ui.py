@@ -73,12 +73,9 @@ def get_config():
 	else:
 		return status(False)
 
-@app.route('/api/get_random_podcasts')
+@app.route('/api/get_podcasts')
 def get_random_podcasts():
-	count = request.args.get("count")
-	if not count: return status(False)
-
-	return podcast.get_random_podcasts(int(count))
+	return podcast.get_podcasts()
 
 @app.route('/api/get_podcast_data_by_id')
 def get_podcast_data_by_id():
