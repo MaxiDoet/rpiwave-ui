@@ -70,23 +70,7 @@
                         var textWrapper = document.querySelector('.ml9 .letters');
                         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-                        
-                        // Normal boot animation
-                        tmp = anime({
-                            targets: '.ml9 .letter',
-                            loop: true,
-                            translateY: [10, 0],
-                            opacity: [0.5, 1],
-                            duration: 500,
-                            direction: 'alternate',
-                            easing: 'easeInOutSine',
-                            elasticity: 600,
-                            delay: (el, i) => 45 * (i+1)
-                        });
-                        
-
-                        /*
-                        // Update animation
+                        // Loading animation
                         tmp = anime({
                             targets: '.ml9 .letter',
                             loop: true,
@@ -97,14 +81,12 @@
                             elasticity: 6,
                             delay: (el, i) => 45 * (i+1)
                         });
-                        */
 
                     </script>
                 </div>
             </div>
             <div class="page" id="page-1">
                 <div class="main">
-                    <img src="https://source.unsplash.com/collection/27710177/800x480" id="page-1-background"></img>
                     <h2 id="page-1-clock" class="time"></h2>
                     <h2 id="page-1-date" class="date"></h2>
                     <div id="page-1-weatherwidget" class="weatherwidget">

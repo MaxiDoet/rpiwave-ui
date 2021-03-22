@@ -59,6 +59,11 @@ function setPage(pageNum) {
             request.open("GET", `/api/dim_down`)
             request.send()  
         }, 10000)
+
+	var now = new Date()
+	if(now.getHours > 22) {
+		
+	}
     }
 
 }
@@ -619,11 +624,27 @@ document.querySelector('#page-1').addEventListener("click", function() {
    setPage(2)
 })
 
-// Remove old interval
-clearInterval(radio["backgroundChangeIntervalId"])
+function updateBackground() {
+	// Remove old interval
+	clearInterval(radio["backgroundChangeIntervalId"])
+
+	var hours = new Date().getHours();
+
+	if (hours > 22 || hours < 6) {
+		// Night
+		document.querySelector("#page-1").style.backgroundImage = '';
+		document.querySelector("#page-1").style.backgroundColor = 'black';
+	} else {
+		// Day
+		document.querySelector("#page-1").style.backgroundColor = ''
+		document.querySelector("#page-1").style.backgroundImage = 'url(https://source.unsplash.com/collection/27710177/800x480)'
+	}
+}
+
+updateBackground();
 
 radio["backgroundChangeIntervalId"] = setInterval(function() {
-    document.querySelector("#page-1-background").src = "https://source.unsplash.com/collection/27710177/800x480"
+	updateBackground();
 }, radio["settings"]["backgroundChangeInterval"] || 300000)
 
 // Page 2

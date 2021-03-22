@@ -222,7 +222,8 @@ p {
 #page-1-clock {
     font-weight: lighter;
     font-size: 120px;
-    will-change: margin-top;
+    margin-top: 8%;
+    will-change: opacity;
     animation: clockFadeIn 2s normal forwards;
 }
 
@@ -238,7 +239,7 @@ p {
 
 @keyframes fadeIn {
     0% {
-        opacity: 0.6;
+        opacity: 0.2;
     }
     100% {
         opacity: 1;
@@ -247,11 +248,9 @@ p {
 
 @keyframes clockFadeIn {
     0% {
-        margin-top: 4%;
-        opacity: 0.6;
+        opacity: 0.5;
     }
     100% {
-        margin-top: 8%;
         opacity: 1;
     }
 }
