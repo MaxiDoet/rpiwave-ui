@@ -2,6 +2,8 @@ import requests
 import random
 import json
 import sys
+import os
+from time import time
 
 from pyPodcastParser.Podcast import Podcast
 import json
@@ -9,17 +11,18 @@ import json
 try:
     podcastsFile = open("podcasts-list.json", "r")
     podcasts = json.loads(podcastsFile.read())["podcasts"]
-    print("Found %s podcasts to add" % len(podcasts))
 except:
     exit()
 
 dataFile = open("podcasts.json", "w+")
 data = {"podcasts": []}
 
-for i in range(len(podcasts)):
+timeTotal=0
+timeStart=0
+timeEnd=0
 
-    sys.stdout.write("%s/%s" % (i+1, len(podcasts)))
-    sys.stdout.flush()
+for i in range(len(podcasts)):
+    timeStart=time()
 
     response = requests.get(podcasts[i])
 
@@ -35,8 +38,14 @@ for i in range(len(podcasts)):
 
     data["podcasts"].append(podcastData)
 
-    sys.stdout.write("     Done\n")
+    timeEnd=time()
+    timeTotal+=timeEnd-timeStart
+
+report = {"time": timeTotal, "count": len(podcasts)}
 
 dataFile.write(json.dumps(data, indent=4))
 dataFile.close()
 
+#print(report)
+
+os.system("cp /home/pi/rpiwave-ui/tools/podcasts.json /home/pi/rpiwave-ui/userdata/podcasts.json")
