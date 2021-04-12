@@ -1,3 +1,4 @@
+import glob
 import requests
 import random
 import json
@@ -36,7 +37,17 @@ for i in range(len(podcasts)):
         episodeData = {"title": podcast.items[i].title, "stream": podcast.items[i].enclosure_url, "number": len(podcast.items) - i}
         podcastData["episodes"].append(episodeData)
 
+
     data["podcasts"].append(podcastData)
+
+    # Scan local files
+    podcastData = {"name": "Local Files", "id": randomId, "logo": '', "description": "Local Files", "episodes": []}
+
+"""
+    local_files = glob.glob("../userdata/local/*.mp3*")
+    for file in local_files:
+	episodeData = {"title": file, "stream": "/local"
+"""
 
     timeEnd=time()
     timeTotal+=timeEnd-timeStart

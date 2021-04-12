@@ -621,7 +621,7 @@ document.querySelector('#page-1').addEventListener("click", function() {
     var request = new XMLHttpRequest()
     request.open("GET", `/api/dim_normal`)
     request.send()  
-   setPage(2)
+    setPage(2)
 })
 
 function updateBackground() {
@@ -630,7 +630,7 @@ function updateBackground() {
 
 	var hours = new Date().getHours();
 
-	if (hours > 22 || hours < 6) {
+	if (hours > 22 && hours < 6) {
 		// Night
 		document.querySelector("#page-1").style.backgroundImage = '';
 		document.querySelector("#page-1").style.backgroundColor = 'black';
@@ -642,7 +642,6 @@ function updateBackground() {
 }
 
 updateBackground();
-
 radio["backgroundChangeIntervalId"] = setInterval(function() {
 	updateBackground();
 }, radio["settings"]["backgroundChangeInterval"] || 300000)
