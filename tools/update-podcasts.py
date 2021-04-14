@@ -40,23 +40,17 @@ for i in range(len(podcasts)):
 
     data["podcasts"].append(podcastData)
 
-    # Scan local files
-    podcastData = {"name": "Local Files", "id": randomId, "logo": '', "description": "Local Files", "episodes": []}
+# Scan local files
+podcastData = {"name": "Local Files", "id": randomId, "logo": '', "description": "Local Files", "episodes": []}
 
-"""
-    local_files = glob.glob("../userdata/local/*.mp3*")
-    for file in local_files:
-	episodeData = {"title": file, "stream": "/local"
-"""
+local_files = glob.glob("../userdata/local/*.mp3*")
+for file in local_files:
+    episodeData = {"title": os.path.split(file)[1], "stream": file.strip("../userdata")}
+    podcastData["episodes"].append(episodeData)
 
-    timeEnd=time()
-    timeTotal+=timeEnd-timeStart
-
-report = {"time": timeTotal, "count": len(podcasts)}
+data["podcasts"].append(podcastData)
 
 dataFile.write(json.dumps(data, indent=4))
 dataFile.close()
-
-#print(report)
 
 os.system("cp /home/pi/rpiwave-ui/tools/podcasts.json /home/pi/rpiwave-ui/userdata/podcasts.json")

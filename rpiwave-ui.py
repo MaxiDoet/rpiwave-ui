@@ -112,4 +112,8 @@ def get_weather_data():
 
 	return data
 
+@app.route('/local/<path:path>')
+def local(path):
+    return send_from_directory('userdata/local/', path)
+
 app.run(host= '0.0.0.0', port=80)
