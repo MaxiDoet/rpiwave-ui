@@ -1,6 +1,6 @@
 # rpiwave-ui
 
-A web radio software for the raspberry pi 4
+A web radio software for the raspberry pi
 
 Features:
   - Podcasts
