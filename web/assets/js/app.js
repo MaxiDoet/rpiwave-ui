@@ -192,8 +192,13 @@ function registerPodcast(scrollContainerId, data) {
  
     var podcastBanner = document.createElement('img')
     podcastBanner.setAttribute('class', 'podcast-banner')
-    podcastBanner.src = data["logo"]
- 
+
+    if (data["logo"]) {
+      podcastBanner.src = data["logo"]
+    } else {
+      podcastBanner.src = "/assets/banners/unknown.png"
+    }
+
     podcast.appendChild(podcastBanner)
   
     scrollContainer.appendChild(podcast)
@@ -336,7 +341,7 @@ function playEpisode(podcastData, number) {
 
     //setCurrentlyPlaying(true, podcastData["episodes"][number]["title"], 4, 0, 8)
 
-    document.querySelector("#page-8").querySelectorAll(".podcast-player-cover")[0].src = podcastData["logo"]
+    document.querySelector("#page-8").querySelectorAll(".podcast-player-cover")[0].src = podcastData["logo"] | "/assets/banners/unknown.png"
     document.querySelector("#page-8").querySelectorAll(".podcast-player-title")[0].textContent = podcastData["name"]
     document.querySelector("#page-8").querySelectorAll(".podcast-player-subtitle")[0].textContent = podcastData["episodes"][number]["title"]
 
